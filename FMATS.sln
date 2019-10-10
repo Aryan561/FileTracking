@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMATS", "FMATS\FMATS.csproj", "{BDEFD170-99B3-443C-9E4B-F09DAF88A399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMATS.DAL", "FMATS.DAL\FMATS.DAL.csproj", "{B2EF41BA-C897-4283-9085-F5835650D7C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDEFD170-99B3-443C-9E4B-F09DAF88A399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEFD170-99B3-443C-9E4B-F09DAF88A399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEFD170-99B3-443C-9E4B-F09DAF88A399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEFD170-99B3-443C-9E4B-F09DAF88A399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2EF41BA-C897-4283-9085-F5835650D7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2EF41BA-C897-4283-9085-F5835650D7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2EF41BA-C897-4283-9085-F5835650D7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2EF41BA-C897-4283-9085-F5835650D7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {41E1919B-FD86-402A-918B-795BA15264D0}
+	EndGlobalSection
+EndGlobal
