@@ -1,0 +1,328 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Employee.master.cs" Inherits="FMATS.Employee.Employee" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>FileTrackingSystem | Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <%-- <link href="../Content/skins/" rel="stylesheet" />--%>
+    <!-- Bootstrap 3.3.6 -->
+    <link href="../Content/skins/skin-blue.min.css" rel="stylesheet" />
+    <link href="../Content/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="../Scripts/toastr/toastr.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+
+    <link href="../Content/AdminLTE.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/toastr/toastr.min.js"></script>
+    <script src="../Scripts/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="index.aspx" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>FTS</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <!-- <span class="logo-lg"><b>Evolutyz</b> -->
+                <span class="logo-lg"><b>
+
+                    <img src="../img/gon_logo.png" class="img" alt="User Image" style="height: 54px;" />
+                </b>
+                </span>
+            </a>
+
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">
+                                    <asp:Label ID="lbl_username" runat="server"></asp:Label>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+
+                                    <p>
+                                        <%--  Alexander Pierce - Web Developer--%>
+                                        <asp:Label ID="lbl_name" runat="server"></asp:Label>
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <button id="btn_profile" runat="server" class="btn btn-default btn-flat" value="Profile" onserverclick="btn_profile_Click">Profile</button>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <button id="btn_changepasswoerd" runat="server" class="btn btn-default btn-flat" onserverclick="btn_changepasswoerd_ServerClick" value="Profile">Change Password</button>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <button id="btn_logout1" class="btn btn-default btn-flat" value="Sign Out" onserverclick="btn_logout_Click" runat="server">Sign Out</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <%-- <li class="user-footer">
+                <div class="pull-left">
+                  <button id="btn_profile" runat="server" class="btn btn-default btn-flat"  value ="Profile" onserverclick="btn_profile_Click" >Profile</button>
+                </div>
+                  <div class="pull-center">
+                     <button id="btn_changepasswoerd" runat="server"  class="btn btn-default btn-flat" onserverclick="btn_changepasswoerd_ServerClick"  value ="Profile"  >Change Password</button>
+                        
+                  </div>
+                <div class="pull-right">
+                    <button id="btn_logout1" class="btn btn-default btn-flat" value="Sign Out" onserverclick="btn_logout_Click"  runat="server" >Sign Out</button>
+                </div>
+              </li>--%>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <!-- <li> -->
+                        <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+                        <!-- </li> -->
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Admin Admin</p>
+                        <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
+                    </div>
+                </div>
+                <!-- search form -->
+                <form action="#" method="get" class="sidebar-form" style="display: none">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <!-- <li class="header">MAIN NAVIGATION</li> -->
+                    <li class="active treeview">
+                        <a href="index.aspx">
+                            <i class="fa fa-dashboard active"></i><span>Dashboard</span>
+                            <!-- <span class="pull-right-container"> -->
+                            <!-- <i class="fa fa-angle-left pull-right"></i> -->
+                            <!-- </span> -->
+                        </a>
+                        <!-- <ul class="treeview-menu"> -->
+                        <!-- <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li> -->
+                        <!-- </ul> -->
+                    </li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-files-o"></i>
+                            <span>File Process</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="Leave.aspx"><i class="fa fa-circle-o"></i>New File</a></li>
+                            <li><a href="Leave.aspx"><i class="fa fa-circle-o"></i>Existing File</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="StatusReport.aspx">
+                            <i class="fa fa-th"></i><span>Status Reports</span>
+
+                        </a>
+                    </li>
+                     <li>
+                        <a href="AddAgent.aspx">
+                            <i class="fa fa-user"></i><span>Add Agent</span>
+
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-files-o"></i>
+                            <span>Add MasterData</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="AddFileCategory.aspx"><i class="fa fa-circle-o"></i>Add File Category </a></li>
+                            <li><a href="AddStatus.aspx"><i class="fa fa-circle-o"></i>Add File Status</a></li>
+                            <li><a href="AddFilePriority.aspx"><i class="fa fa-circle-o"></i>Add File Priority</a></li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- <section class="content-header"> -->
+            <!-- <h1> -->
+            <!-- Dashboard -->
+            <!-- <small></small> -->
+            <!-- </h1> -->
+            <!-- <ol class="breadcrumb"> -->
+            <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
+            <!-- <li class="active">Dashboard</li> -->
+            <!-- </ol> -->
+            <!-- </section> -->
+            <form id="form1" runat="server">
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        <section class="content">
+                            <!-- /.row -->
+                        </section>
+                    </asp:ContentPlaceHolder>
+                </div>
+            </form>
+            <!-- Main content -->
+
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <!-- <b>Version</b> 2.3.7 -->
+            </div>
+            <strong>Copyright &copy;  <%: DateTime.Now.Year %>  <a target='blank' href="#">FileTrackingSystem </a>.</strong> All rights
+    reserved.
+ 
+        </footer>
+
+      
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 2.2.3 -->
+    <script src="../Scripts/app.min.js"></script>
+    <script src="../Scripts/Chart.min.js"></script>
+     <script type="text/javascript">
+
+
+        function showSuccessToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showSuccessToast', Msg);
+        }
+        function showStickySuccessToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showToast', {
+                text: Msg,
+                sticky: true,
+                position: 'bottom-right',
+                type: 'success',
+                closeText: '',
+                close: function () {
+                    // console.log("toast is closed ...");
+                }
+            });
+
+        }
+        function showNoticeToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showNoticeToast', Msg);
+        }
+        function showStickyNoticeToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showToast', {
+                text: Msg,
+                sticky: true,
+                position: 'top-right',
+                type: 'notice',
+                closeText: '',
+                close: function () { //console.log("toast is closed ...");
+                }
+            });
+        }
+        function showWarningToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showWarningToast', Msg);
+        }
+        function showStickyWarningToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showToast', {
+                text: Msg,
+                stayTime: 10000,
+                //sticky: true,
+                sticky: false,
+                position: 'bottom-right',
+                type: 'warning',
+                closeText: '',
+                close: function () {
+                    // console.log("toast is closed ...");
+                }
+            });
+        }
+        function showErrorToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showErrorToast', Msg);
+        }
+        function showStickyErrorToast(Msg) {
+            $('.toast-container').remove();
+            $().toastmessage('showToast', {
+                text: Msg,
+                sticky: true,
+                position: 'top-right',
+                type: 'error',
+                closeText: '',
+                close: function () {
+                    //console.log("toast is closed ...");
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

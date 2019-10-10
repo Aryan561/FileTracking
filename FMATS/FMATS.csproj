@@ -1,0 +1,913 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDEFD170-99B3-443C-9E4B-F09DAF88A399}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FMATS</RootNamespace>
+    <AssemblyName>FMATS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\AddPhoneNumber.aspx" />
+    <Content Include="Account\Confirm.aspx" />
+    <Content Include="Account\Forgot.aspx" />
+    <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\ManageLogins.aspx" />
+    <Content Include="Account\ManagePassword.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="AgentsModel\Addfile.aspx" />
+    <Content Include="AgentsModel\Site.Master" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="Content\AdminLTE.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\global.css" />
+    <Content Include="Content\Plugins\block\jquery.blockUI.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\ajaxSubmit.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\ajaxSubmit.php" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\attribute.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\choice.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\collapse.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\container.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\container2.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\container3.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\container4.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\date.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\defaultMessage.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\dynamic.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\dynamic2.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\dynamic3.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\dynamic4.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\enable.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\enable2.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\event.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\event2.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\event3.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\feedbackIcons.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\file.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\group.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\html5.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\i18n.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\index.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\invisible.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\message.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\multiple.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\remote.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\remote.php" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\remote2.php" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\reset.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\selector.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\selector2.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\specialName.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\submitHandler.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\tab.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\target.php" />
+    <Content Include="Content\Plugins\bootstrap-validator\demo\validators.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\css\bootstrapValidator.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\css\bootstrapValidator.min.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\bootstrapValidator.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\bootstrapValidator.min.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\ar_MA.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\be_FR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\be_NL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\bg_BG.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\cs_CZ.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\da_DK.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\de_DE.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\en_US.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\es_CL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\es_ES.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\fa_IR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\fr_FR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\gr_EL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\hu_HU.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\id_ID.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\it_IT.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\ja_JP.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\nl_NL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\no_NO.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\pl_PL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\pt_BR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\ro_RO.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\ru_RU.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\sr_RS.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\sv_SE.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\th_TH.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\tr_TR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\ua_UA.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\vi_VN.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\zh_CN.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\dist\js\language\zh_TW.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\Gruntfile.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\screenshots\demo.gif" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\css\bootstrapValidator.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\bootstrapValidator.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\ar_MA.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\be_FR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\be_NL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\bg_BG.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\cs_CZ.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\da_DK.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\de_DE.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\en_US.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\es_CL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\es_ES.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\fa_IR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\fr_FR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\gr_EL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\hu_HU.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\id_ID.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\it_IT.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\ja_JP.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\nl_NL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\no_NO.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\pl_PL.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\pt_BR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\ro_RO.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\ru_RU.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\sr_RS.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\sv_SE.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\th_TH.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\tr_TR.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\ua_UA.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\vi_VN.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\zh_CN.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\language\zh_TW.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\base64.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\between.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\blank.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\callback.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\choice.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\creditCard.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\cusip.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\cvv.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\date.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\different.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\digits.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\ean.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\emailAddress.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\file.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\greaterThan.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\grid.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\hex.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\hexColor.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\iban.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\id.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\identical.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\imei.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\imo.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\integer.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\ip.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\isbn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\isin.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\ismn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\issn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\lessThan.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\mac.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\meid.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\notEmpty.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\numeric.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\phone.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\regexp.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\remote.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\rtn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\sedol.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\siren.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\siret.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\step.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\stringCase.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\stringLength.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\uri.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\uuid.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\vat.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\vin.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\src\js\validator\zipCode.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\index.html" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\api.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\container.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\dynamic.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\enable.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\event.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\excluded.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\group.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\i18n.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\message.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\between.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\callback.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\creditCard.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\date.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\ean.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\emailAddress.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\greaterThan.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\iban.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\id.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\imo.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\ip.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\isbn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\isin.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\ismn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\issn.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\lessThan.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\meid.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\phone.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\uri.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\vat.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\validator\zipCode.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\test\spec\verbose.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\boot.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\console.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\jasmine-html.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\jasmine.css" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\jasmine.js" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jasmine\jasmine_favicon.png" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Content\Plugins\datepicker\bootstrap-datepicker.js" />
+    <Content Include="Content\Plugins\datepicker\datepicker3.css" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.nb.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.ua.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Content\Plugins\datepicker\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\skins\skin-black-light.css" />
+    <Content Include="Content\skins\skin-black-light.min.css" />
+    <Content Include="Content\skins\skin-black.css" />
+    <Content Include="Content\skins\skin-black.min.css" />
+    <Content Include="Content\skins\skin-blue-light.css" />
+    <Content Include="Content\skins\skin-blue-light.min.css" />
+    <Content Include="Content\skins\skin-blue.css" />
+    <Content Include="Content\skins\skin-blue.min.css" />
+    <Content Include="Content\skins\skin-green-light.css" />
+    <Content Include="Content\skins\skin-green-light.min.css" />
+    <Content Include="Content\skins\skin-green.css" />
+    <Content Include="Content\skins\skin-green.min.css" />
+    <Content Include="Content\skins\skin-purple-light.css" />
+    <Content Include="Content\skins\skin-purple-light.min.css" />
+    <Content Include="Content\skins\skin-purple.css" />
+    <Content Include="Content\skins\skin-purple.min.css" />
+    <Content Include="Content\skins\skin-red-light.css" />
+    <Content Include="Content\skins\skin-red-light.min.css" />
+    <Content Include="Content\skins\skin-red.css" />
+    <Content Include="Content\skins\skin-red.min.css" />
+    <Content Include="Content\skins\skin-yellow-light.css" />
+    <Content Include="Content\skins\skin-yellow-light.min.css" />
+    <Content Include="Content\skins\skin-yellow.css" />
+    <Content Include="Content\skins\skin-yellow.min.css" />
+    <Content Include="Content\skins\_all-skins.css" />
+    <Content Include="Content\skins\_all-skins.min.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Employee\AddAgent.aspx" />
+    <Content Include="Employee\AddClientCategory.aspx" />
+    <Content Include="Employee\AddFileCategory.aspx" />
+    <Content Include="Employee\AddFilePriority.aspx" />
+    <Content Include="Employee\AddStatus.aspx" />
+    <Content Include="Employee\ChangePassword.aspx" />
+    <Content Include="Employee\index.aspx" />
+    <Content Include="Employee\Leave.aspx" />
+    <Content Include="Employee\StatusReport.aspx" />
+    <Content Include="Employee\tasktimesheet.html" />
+    <Content Include="Employee\userprofile.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ForgotPassword.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="img\avatar.png" />
+    <Content Include="img\avatar04.png" />
+    <Content Include="img\avatar2.png" />
+    <Content Include="img\avatar3.png" />
+    <Content Include="img\avatar5.png" />
+    <Content Include="img\boxed-bg.jpg" />
+    <Content Include="img\boxed-bg.png" />
+    <Content Include="img\credit\american-express.png" />
+    <Content Include="img\credit\cirrus.png" />
+    <Content Include="img\credit\mastercard.png" />
+    <Content Include="img\credit\mestro.png" />
+    <Content Include="img\credit\paypal.png" />
+    <Content Include="img\credit\paypal2.png" />
+    <Content Include="img\credit\visa.png" />
+    <Content Include="img\default-50x50.gif" />
+    <Content Include="img\GIF\default.gif" />
+    <Content Include="img\gon_logo.png" />
+    <Content Include="img\home-bg.jpg" />
+    <Content Include="img\icons.png" />
+    <Content Include="img\photo1.png" />
+    <Content Include="img\photo2.png" />
+    <Content Include="img\photo3.jpg" />
+    <Content Include="img\photo4.jpg" />
+    <Content Include="img\shadow.png" />
+    <Content Include="img\user1-128x128.jpg" />
+    <Content Include="img\user2-160x160.jpg" />
+    <Content Include="img\user3-128x128.jpg" />
+    <Content Include="img\user4-128x128.jpg" />
+    <Content Include="img\user5-128x128.jpg" />
+    <Content Include="img\user6-128x128.jpg" />
+    <Content Include="img\user7-128x128.jpg" />
+    <Content Include="img\user8-128x128.jpg" />
+    <Content Include="Login.aspx" />
+    <Content Include="Project_Readme.html" />
+    <Content Include="Register.aspx" />
+    <Content Include="ResetPassword.aspx" />
+    <Content Include="ResetPasswordConfirmation.aspx" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\app.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\jquery.toastmessage.js" />
+    <Content Include="Scripts\toastr\toastr.min.css" />
+    <Content Include="Scripts\toastr\toastr.min.js" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="ApplicationInsights.config" />
+    <Content Include="Bundle.config" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.designer.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentsModel\Addfile.aspx.cs">
+      <DependentUpon>Addfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentsModel\Addfile.aspx.designer.cs">
+      <DependentUpon>Addfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentsModel\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentsModel\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AddAgent.aspx.cs">
+      <DependentUpon>AddAgent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AddAgent.aspx.designer.cs">
+      <DependentUpon>AddAgent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AddClientCategory.aspx.cs">
+      <DependentUpon>AddClientCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AddClientCategory.aspx.designer.cs">
+      <DependentUpon>AddClientCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AddFileCategory.aspx.cs">
+      <DependentUpon>AddFileCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AddFileCategory.aspx.designer.cs">
+      <DependentUpon>AddFileCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AddFilePriority.aspx.cs">
+      <DependentUpon>AddFilePriority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AddFilePriority.aspx.designer.cs">
+      <DependentUpon>AddFilePriority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\AddStatus.aspx.cs">
+      <DependentUpon>AddStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\AddStatus.aspx.designer.cs">
+      <DependentUpon>AddStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Employee.Master.cs">
+      <DependentUpon>Employee.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\Employee.Master.designer.cs">
+      <DependentUpon>Employee.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\Leave.aspx.cs">
+      <DependentUpon>Leave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\Leave.aspx.designer.cs">
+      <DependentUpon>Leave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\StatusReport.aspx.cs">
+      <DependentUpon>StatusReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\StatusReport.aspx.designer.cs">
+      <DependentUpon>StatusReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\userprofile.aspx.cs">
+      <DependentUpon>userprofile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employee\userprofile.aspx.designer.cs">
+      <DependentUpon>userprofile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Webhelper\Sendmail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Plugins\bootstrap-validator\.gitignore" />
+    <Content Include="Content\Plugins\bootstrap-validator\bootstrapValidator.jquery.json" />
+    <Content Include="Content\Plugins\bootstrap-validator\bower.json" />
+    <Content Include="Content\Plugins\bootstrap-validator\CHANGELOG.md" />
+    <Content Include="Content\Plugins\bootstrap-validator\CONTRIBUTORS.md" />
+    <Content Include="Content\Plugins\bootstrap-validator\package.json" />
+    <Content Include="Content\Plugins\bootstrap-validator\README.md" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Plugins\bootstrap-validator\vendor\jquery\jquery-1.10.2.min.map" />
+    <Content Include="Employee\Employee.Master" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\FMATS.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\FMATS.csprojAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Site.Master" />
+    <Content Include="Site.Mobile.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FMATS.DAL\FMATS.DAL.csproj">
+      <Project>{b2ef41ba-c897-4283-9085-f5835650d7c7}</Project>
+      <Name>FMATS.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53479</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53479/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

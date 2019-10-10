@@ -1,0 +1,1177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FileTrackingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgentAccessLevel">
+          <Key>
+            <PropertyRef Name="AgentAccessLevelId" />
+          </Key>
+          <Property Name="AgentAccessLevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessLevel" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Agents">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="AgentTypeID" Type="int" />
+          <Property Name="AgentEmployeeName" Type="varchar" MaxLength="256" />
+          <Property Name="AgentAccessLevelId" Type="int" />
+          <Property Name="AgentMobile" Type="bigint" />
+          <Property Name="AgentEmail" Type="varchar" MaxLength="256" />
+          <Property Name="AgentScanPref" Type="varchar" MaxLength="256" />
+          <Property Name="AgentSection" Type="varchar" MaxLength="256" />
+          <Property Name="AgentMisc1" Type="varchar" MaxLength="256" />
+          <Property Name="AgentMisc2" Type="varchar" MaxLength="256" />
+          <Property Name="AgentMisc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AgentType">
+          <Key>
+            <PropertyRef Name="AgentTypeId" />
+          </Key>
+          <Property Name="AgentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ClientCategory" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="ClientMobile" Type="bigint" />
+          <Property Name="ClientEmail" Type="varchar" MaxLength="256" />
+          <Property Name="ClientAddress" Type="varchar" MaxLength="350" />
+          <Property Name="ClientDistrict" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc1" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc2" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc3" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ClientCategory">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientCategoryName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ClientCategoryDescription" Type="varchar" MaxLength="256" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="dateadded" Type="datetime" />
+          <Property Name="dateLastModified" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="FileCategory">
+          <Key>
+            <PropertyRef Name="FileCategoryId" />
+          </Key>
+          <Property Name="FileCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileCategoryName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileCategoryDescription" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc3" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="FileData">
+          <Key>
+            <PropertyRef Name="FileDataId" />
+          </Key>
+          <Property Name="FileDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileNoExt" Type="varchar" MaxLength="100" />
+          <Property Name="FileNoInt" Type="varchar" MaxLength="100" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="FileCategoryId" Type="int" />
+          <Property Name="FilePriorityId" Type="int" />
+          <Property Name="CurrentStatus" Type="varchar" MaxLength="150" />
+          <Property Name="CurrentAgentId" Type="int" />
+          <Property Name="FileEntredOn" Type="datetime" />
+          <Property Name="FileDeliveredOn" Type="datetime" />
+          <Property Name="SubjectBrief" Type="varchar" MaxLength="256" />
+          <Property Name="SubjectDesc" Type="varchar" MaxLength="256" />
+          <Property Name="CmoSection" Type="varchar" MaxLength="256" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="FileCode" Type="varchar" MaxLength="150" />
+          <Property Name="ContactPersonName" Type="varchar" MaxLength="300" />
+          <Property Name="ContactPersonNumber" Type="int" />
+          <Property Name="FundType" Type="varchar" MaxLength="150" />
+          <Property Name="FundSource" Type="varchar" MaxLength="150" />
+          <Property Name="Scheme" Type="varchar" MaxLength="150" />
+          <Property Name="Year" Type="int" />
+          <Property Name="AmountProposed" Type="money" />
+          <Property Name="AmountApproved" Type="money" />
+          <Property Name="AmountMisc" Type="money" />
+          <Property Name="File_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="File_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="File_misc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FilePriority">
+          <Key>
+            <PropertyRef Name="FilePriorityId" />
+          </Key>
+          <Property Name="FilePriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilePriorityName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalNotif" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalAlert" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalCrit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriority_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="FilePriority_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="FilePriority_misc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="StatusMisc1" Type="varchar" MaxLength="250" />
+          <Property Name="StatusMisc2" Type="varchar" MaxLength="250" />
+          <Property Name="StatusMisc3" Type="varchar" MaxLength="250" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileDataId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="StatusHistoryMisc1" Type="varchar" MaxLength="256" />
+          <Property Name="StatusHistoryMisc2" Type="varchar" MaxLength="256" />
+          <Property Name="StatusHistoryMisc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Agents__AgentAcc__267ABA7A">
+          <End Role="AgentAccessLevel" Type="Self.AgentAccessLevel" Multiplicity="0..1" />
+          <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentAccessLevel">
+              <PropertyRef Name="AgentAccessLevelId" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="AgentAccessLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agents__AgentTyp__25869641">
+          <End Role="AgentType" Type="Self.AgentType" Multiplicity="0..1" />
+          <End Role="Agents" Type="Self.Agents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentType">
+              <PropertyRef Name="AgentTypeId" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="AgentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__Client__300424B4">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__Curren__32E0915F">
+          <End Role="Agents" Type="Self.Agents" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="CurrentAgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FileCa__30F848ED">
+          <End Role="FileCategory" Type="Self.FileCategory" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileCategory">
+              <PropertyRef Name="FileCategoryId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FileCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FilePr__31EC6D26">
+          <End Role="FilePriority" Type="Self.FilePriority" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePriority">
+              <PropertyRef Name="FilePriorityId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FilePriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StatusHis__FileD__38996AB5">
+          <End Role="FileData" Type="Self.FileData" Multiplicity="0..1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileData">
+              <PropertyRef Name="FileDataId" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="FileDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StatusHis__Statu__398D8EEE">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FileTrackingModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgentAccessLevel" EntityType="Self.AgentAccessLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agents" EntityType="Self.Agents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgentType" EntityType="Self.AgentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientCategory" EntityType="Self.ClientCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileCategory" EntityType="Self.FileCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileData" EntityType="Self.FileData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilePriority" EntityType="Self.FilePriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusHistory" EntityType="Self.StatusHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Agents__AgentAcc__267ABA7A" Association="Self.FK__Agents__AgentAcc__267ABA7A">
+            <End Role="AgentAccessLevel" EntitySet="AgentAccessLevel" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agents__AgentTyp__25869641" Association="Self.FK__Agents__AgentTyp__25869641">
+            <End Role="AgentType" EntitySet="AgentType" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__Client__300424B4" Association="Self.FK__FileData__Client__300424B4">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__Curren__32E0915F" Association="Self.FK__FileData__Curren__32E0915F">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FileCa__30F848ED" Association="Self.FK__FileData__FileCa__30F848ED">
+            <End Role="FileCategory" EntitySet="FileCategory" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FilePr__31EC6D26" Association="Self.FK__FileData__FilePr__31EC6D26">
+            <End Role="FilePriority" EntitySet="FilePriority" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__FileD__38996AB5" Association="Self.FK__StatusHis__FileD__38996AB5">
+            <End Role="FileData" EntitySet="FileData" />
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__Statu__398D8EEE" Association="Self.FK__StatusHis__Statu__398D8EEE">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusHistory" EntitySet="StatusHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FileTrackingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgentAccessLevel">
+          <Key>
+            <PropertyRef Name="AgentAccessLevelId" />
+          </Key>
+          <Property Name="AgentAccessLevelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessLevel" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agents" Relationship="Self.FK__Agents__AgentAcc__267ABA7A" FromRole="AgentAccessLevel" ToRole="Agents" />
+        </EntityType>
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgentTypeID" Type="Int32" />
+          <Property Name="AgentEmployeeName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentAccessLevelId" Type="Int32" />
+          <Property Name="AgentMobile" Type="Int64" />
+          <Property Name="AgentEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentScanPref" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentSection" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentMisc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentMisc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AgentMisc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AgentAccessLevel" Relationship="Self.FK__Agents__AgentAcc__267ABA7A" FromRole="Agents" ToRole="AgentAccessLevel" />
+          <NavigationProperty Name="AgentType" Relationship="Self.FK__Agents__AgentTyp__25869641" FromRole="Agents" ToRole="AgentType" />
+          <NavigationProperty Name="FileDatas" Relationship="Self.FK__FileData__Curren__32E0915F" FromRole="Agents" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="AgentType">
+          <Key>
+            <PropertyRef Name="AgentTypeId" />
+          </Key>
+          <Property Name="AgentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agents" Relationship="Self.FK__Agents__AgentTyp__25869641" FromRole="AgentType" ToRole="Agents" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientCategory" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientMobile" Type="Int64" />
+          <Property Name="ClientEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ClientAddress" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="ClientDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FileDatas" Relationship="Self.FK__FileData__Client__300424B4" FromRole="Client" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="ClientCategory">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCategoryName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientCategoryDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="dateadded" Type="DateTime" Precision="3" />
+          <Property Name="dateLastModified" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FileCategory">
+          <Key>
+            <PropertyRef Name="FileCategoryId" />
+          </Key>
+          <Property Name="FileCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileCategoryName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileCategoryDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FileDatas" Relationship="Self.FK__FileData__FileCa__30F848ED" FromRole="FileCategory" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="FileData">
+          <Key>
+            <PropertyRef Name="FileDataId" />
+          </Key>
+          <Property Name="FileDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileId" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileNoExt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileNoInt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="FileCategoryId" Type="Int32" />
+          <Property Name="FilePriorityId" Type="Int32" />
+          <Property Name="CurrentStatus" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAgentId" Type="Int32" />
+          <Property Name="FileEntredOn" Type="DateTime" Precision="3" />
+          <Property Name="FileDeliveredOn" Type="DateTime" Precision="3" />
+          <Property Name="SubjectBrief" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectDesc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CmoSection" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonNumber" Type="Int32" />
+          <Property Name="FundType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FundSource" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Scheme" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="AmountProposed" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountApproved" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountMisc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="File_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="File_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="File_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agent" Relationship="Self.FK__FileData__Curren__32E0915F" FromRole="FileData" ToRole="Agents" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__FileData__Client__300424B4" FromRole="FileData" ToRole="Client" />
+          <NavigationProperty Name="FileCategory" Relationship="Self.FK__FileData__FileCa__30F848ED" FromRole="FileData" ToRole="FileCategory" />
+          <NavigationProperty Name="FilePriority" Relationship="Self.FK__FileData__FilePr__31EC6D26" FromRole="FileData" ToRole="FilePriority" />
+          <NavigationProperty Name="StatusHistories" Relationship="Self.FK__StatusHis__FileD__38996AB5" FromRole="FileData" ToRole="StatusHistory" />
+        </EntityType>
+        <EntityType Name="FilePriority">
+          <Key>
+            <PropertyRef Name="FilePriorityId" />
+          </Key>
+          <Property Name="FilePriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilePriorityName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FileWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalNotif" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalAlert" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalCrit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriority_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FilePriority_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FilePriority_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FileDatas" Relationship="Self.FK__FileData__FilePr__31EC6D26" FromRole="FilePriority" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StatusMisc1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMisc2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMisc3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusHistories" Relationship="Self.FK__StatusHis__Statu__398D8EEE" FromRole="Status" ToRole="StatusHistory" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileDataId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="StatusHistoryMisc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="StatusHistoryMisc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="StatusHistoryMisc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FileData" Relationship="Self.FK__StatusHis__FileD__38996AB5" FromRole="StatusHistory" ToRole="FileData" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__StatusHis__Statu__398D8EEE" FromRole="StatusHistory" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK__Agents__AgentAcc__267ABA7A">
+          <End Role="AgentAccessLevel" Type="Self.AgentAccessLevel" Multiplicity="0..1" />
+          <End Role="Agents" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentAccessLevel">
+              <PropertyRef Name="AgentAccessLevelId" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="AgentAccessLevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agents__AgentTyp__25869641">
+          <End Role="AgentType" Type="Self.AgentType" Multiplicity="0..1" />
+          <End Role="Agents" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentType">
+              <PropertyRef Name="AgentTypeId" />
+            </Principal>
+            <Dependent Role="Agents">
+              <PropertyRef Name="AgentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__Curren__32E0915F">
+          <End Role="Agents" Type="Self.Agent" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agents">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="CurrentAgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__Client__300424B4">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FileCa__30F848ED">
+          <End Role="FileCategory" Type="Self.FileCategory" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileCategory">
+              <PropertyRef Name="FileCategoryId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FileCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FilePr__31EC6D26">
+          <End Role="FilePriority" Type="Self.FilePriority" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePriority">
+              <PropertyRef Name="FilePriorityId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FilePriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StatusHis__FileD__38996AB5">
+          <End Role="FileData" Type="Self.FileData" Multiplicity="0..1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileData">
+              <PropertyRef Name="FileDataId" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="FileDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StatusHis__Statu__398D8EEE">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusHistory" Type="Self.StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="FileTrackingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AgentAccessLevels" EntityType="Self.AgentAccessLevel" />
+          <EntitySet Name="Agents" EntityType="Self.Agent" />
+          <EntitySet Name="AgentTypes" EntityType="Self.AgentType" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="ClientCategories" EntityType="Self.ClientCategory" />
+          <EntitySet Name="FileCategories" EntityType="Self.FileCategory" />
+          <EntitySet Name="FileDatas" EntityType="Self.FileData" />
+          <EntitySet Name="FilePriorities" EntityType="Self.FilePriority" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="StatusHistories" EntityType="Self.StatusHistory" />
+          <AssociationSet Name="FK__Agents__AgentAcc__267ABA7A" Association="Self.FK__Agents__AgentAcc__267ABA7A">
+            <End Role="AgentAccessLevel" EntitySet="AgentAccessLevels" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agents__AgentTyp__25869641" Association="Self.FK__Agents__AgentTyp__25869641">
+            <End Role="AgentType" EntitySet="AgentTypes" />
+            <End Role="Agents" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__Curren__32E0915F" Association="Self.FK__FileData__Curren__32E0915F">
+            <End Role="Agents" EntitySet="Agents" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__Client__300424B4" Association="Self.FK__FileData__Client__300424B4">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FileCa__30F848ED" Association="Self.FK__FileData__FileCa__30F848ED">
+            <End Role="FileCategory" EntitySet="FileCategories" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FilePr__31EC6D26" Association="Self.FK__FileData__FilePr__31EC6D26">
+            <End Role="FilePriority" EntitySet="FilePriorities" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__FileD__38996AB5" Association="Self.FK__StatusHis__FileD__38996AB5">
+            <End Role="FileData" EntitySet="FileDatas" />
+            <End Role="StatusHistory" EntitySet="StatusHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__Statu__398D8EEE" Association="Self.FK__StatusHis__Statu__398D8EEE">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusHistory" EntitySet="StatusHistories" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FileTrackingModelStoreContainer" CdmEntityContainer="FileTrackingEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="FileTrackingModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentAccessLevels">
+            <EntityTypeMapping TypeName="FileTrackingModel.AgentAccessLevel">
+              <MappingFragment StoreEntitySet="AgentAccessLevel">
+                <ScalarProperty Name="AgentAccessLevelId" ColumnName="AgentAccessLevelId" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agents">
+            <EntityTypeMapping TypeName="FileTrackingModel.Agent">
+              <MappingFragment StoreEntitySet="Agents">
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="AgentTypeID" ColumnName="AgentTypeID" />
+                <ScalarProperty Name="AgentEmployeeName" ColumnName="AgentEmployeeName" />
+                <ScalarProperty Name="AgentAccessLevelId" ColumnName="AgentAccessLevelId" />
+                <ScalarProperty Name="AgentMobile" ColumnName="AgentMobile" />
+                <ScalarProperty Name="AgentEmail" ColumnName="AgentEmail" />
+                <ScalarProperty Name="AgentScanPref" ColumnName="AgentScanPref" />
+                <ScalarProperty Name="AgentSection" ColumnName="AgentSection" />
+                <ScalarProperty Name="AgentMisc1" ColumnName="AgentMisc1" />
+                <ScalarProperty Name="AgentMisc2" ColumnName="AgentMisc2" />
+                <ScalarProperty Name="AgentMisc3" ColumnName="AgentMisc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentTypes">
+            <EntityTypeMapping TypeName="FileTrackingModel.AgentType">
+              <MappingFragment StoreEntitySet="AgentType">
+                <ScalarProperty Name="AgentTypeId" ColumnName="AgentTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="FileTrackingModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="FileTrackingModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="FileTrackingModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="FileTrackingModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="FileTrackingModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientCategory" ColumnName="ClientCategory" />
+                <ScalarProperty Name="ClientMobile" ColumnName="ClientMobile" />
+                <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientDistrict" ColumnName="ClientDistrict" />
+                <ScalarProperty Name="Client_misc1" ColumnName="Client_misc1" />
+                <ScalarProperty Name="Client_misc2" ColumnName="Client_misc2" />
+                <ScalarProperty Name="Client_misc3" ColumnName="Client_misc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientCategories">
+            <EntityTypeMapping TypeName="FileTrackingModel.ClientCategory">
+              <MappingFragment StoreEntitySet="ClientCategory">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientCategoryName" ColumnName="ClientCategoryName" />
+                <ScalarProperty Name="ClientCategoryDescription" ColumnName="ClientCategoryDescription" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="dateadded" ColumnName="dateadded" />
+                <ScalarProperty Name="dateLastModified" ColumnName="dateLastModified" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileCategories">
+            <EntityTypeMapping TypeName="FileTrackingModel.FileCategory">
+              <MappingFragment StoreEntitySet="FileCategory">
+                <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+                <ScalarProperty Name="FileCategoryName" ColumnName="FileCategoryName" />
+                <ScalarProperty Name="FileCategoryDescription" ColumnName="FileCategoryDescription" />
+                <ScalarProperty Name="FileCategory_misc1" ColumnName="FileCategory_misc1" />
+                <ScalarProperty Name="FileCategory_misc2" ColumnName="FileCategory_misc2" />
+                <ScalarProperty Name="FileCategory_misc3" ColumnName="FileCategory_misc3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileDatas">
+            <EntityTypeMapping TypeName="FileTrackingModel.FileData">
+              <MappingFragment StoreEntitySet="FileData">
+                <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileNoExt" ColumnName="FileNoExt" />
+                <ScalarProperty Name="FileNoInt" ColumnName="FileNoInt" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+                <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="CurrentAgentId" ColumnName="CurrentAgentId" />
+                <ScalarProperty Name="FileEntredOn" ColumnName="FileEntredOn" />
+                <ScalarProperty Name="FileDeliveredOn" ColumnName="FileDeliveredOn" />
+                <ScalarProperty Name="SubjectBrief" ColumnName="SubjectBrief" />
+                <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+                <ScalarProperty Name="CmoSection" ColumnName="CmoSection" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="FileCode" ColumnName="FileCode" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="ContactPersonNumber" ColumnName="ContactPersonNumber" />
+                <ScalarProperty Name="FundType" ColumnName="FundType" />
+                <ScalarProperty Name="FundSource" ColumnName="FundSource" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="AmountProposed" ColumnName="AmountProposed" />
+                <ScalarProperty Name="AmountApproved" ColumnName="AmountApproved" />
+                <ScalarProperty Name="AmountMisc" ColumnName="AmountMisc" />
+                <ScalarProperty Name="File_misc1" ColumnName="File_misc1" />
+                <ScalarProperty Name="File_misc2" ColumnName="File_misc2" />
+                <ScalarProperty Name="File_misc3" ColumnName="File_misc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilePriorities">
+            <EntityTypeMapping TypeName="FileTrackingModel.FilePriority">
+              <MappingFragment StoreEntitySet="FilePriority">
+                <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+                <ScalarProperty Name="FilePriorityName" ColumnName="FilePriorityName" />
+                <ScalarProperty Name="FileWeight" ColumnName="FileWeight" />
+                <ScalarProperty Name="FilePriorityIntervalNotif" ColumnName="FilePriorityIntervalNotif" />
+                <ScalarProperty Name="FilePriorityIntervalAlert" ColumnName="FilePriorityIntervalAlert" />
+                <ScalarProperty Name="FilePriorityIntervalCrit" ColumnName="FilePriorityIntervalCrit" />
+                <ScalarProperty Name="FilePriority_misc1" ColumnName="FilePriority_misc1" />
+                <ScalarProperty Name="FilePriority_misc2" ColumnName="FilePriority_misc2" />
+                <ScalarProperty Name="FilePriority_misc3" ColumnName="FilePriority_misc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="FileTrackingModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusMisc1" ColumnName="StatusMisc1" />
+                <ScalarProperty Name="StatusMisc2" ColumnName="StatusMisc2" />
+                <ScalarProperty Name="StatusMisc3" ColumnName="StatusMisc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusHistories">
+            <EntityTypeMapping TypeName="FileTrackingModel.StatusHistory">
+              <MappingFragment StoreEntitySet="StatusHistory">
+                <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+                <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="StatusHistoryMisc1" ColumnName="StatusHistoryMisc1" />
+                <ScalarProperty Name="StatusHistoryMisc2" ColumnName="StatusHistoryMisc2" />
+                <ScalarProperty Name="StatusHistoryMisc3" ColumnName="StatusHistoryMisc3" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="FileTrackingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
