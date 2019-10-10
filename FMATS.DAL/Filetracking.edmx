@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Filetracking.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgentAccessLevel">
+          <Key>
+            <PropertyRef Name="AgentAccessLevelId" />
+          </Key>
+          <Property Name="AgentAccessLevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessLevel" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ClientCategoryId" Type="int" Nullable="false" />
+          <Property Name="ClientMobile" Type="bigint" />
+          <Property Name="ClientEmail" Type="varchar" MaxLength="256" />
+          <Property Name="ClientAddress" Type="varchar" MaxLength="350" />
+          <Property Name="ClientDistrict" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc1" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc2" Type="varchar" MaxLength="200" />
+          <Property Name="Client_misc3" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="ClientCategory">
+          <Key>
+            <PropertyRef Name="ClientCategoryId" />
+          </Key>
+          <Property Name="ClientCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientCategoryName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ClientCategoryDescription" Type="varchar" MaxLength="256" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="dateadded" Type="datetime" />
+          <Property Name="dateLastModified" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="FileCategory">
+          <Key>
+            <PropertyRef Name="FileCategoryId" />
+          </Key>
+          <Property Name="FileCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileCategoryName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileCategoryDescription" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="FileCategory_misc3" Type="varchar" MaxLength="256" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="DateLastModified" Type="datetime" />
+          <Property Name="Userid" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="FileData">
+          <Key>
+            <PropertyRef Name="FileDataId" />
+          </Key>
+          <Property Name="FileDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileNoExt" Type="varchar" MaxLength="100" />
+          <Property Name="FileNoInt" Type="varchar" MaxLength="100" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="FileCategoryId" Type="int" />
+          <Property Name="FilePriorityId" Type="int" />
+          <Property Name="CurrentStatus" Type="varchar" MaxLength="150" />
+          <Property Name="CurrentAgentId" Type="int" />
+          <Property Name="FileEntredOn" Type="datetime" />
+          <Property Name="FileDeliveredOn" Type="datetime" />
+          <Property Name="SubjectBrief" Type="varchar" MaxLength="256" />
+          <Property Name="SubjectDesc" Type="varchar" MaxLength="256" />
+          <Property Name="CmoSection" Type="varchar" MaxLength="256" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="FileCode" Type="varchar" MaxLength="150" />
+          <Property Name="ContactPersonName" Type="varchar" MaxLength="300" />
+          <Property Name="ContactPersonNumber" Type="int" />
+          <Property Name="FundType" Type="varchar" MaxLength="150" />
+          <Property Name="FundSource" Type="varchar" MaxLength="150" />
+          <Property Name="Scheme" Type="varchar" MaxLength="150" />
+          <Property Name="Year" Type="int" />
+          <Property Name="AmountProposed" Type="money" />
+          <Property Name="AmountApproved" Type="money" />
+          <Property Name="AmountMisc" Type="money" />
+          <Property Name="File_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="File_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="File_misc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FilePriority">
+          <Key>
+            <PropertyRef Name="FilePriorityId" />
+          </Key>
+          <Property Name="FilePriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilePriorityName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileWeight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalNotif" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalAlert" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalCrit" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriority_misc1" Type="varchar" MaxLength="256" />
+          <Property Name="FilePriority_misc2" Type="varchar" MaxLength="256" />
+          <Property Name="FilePriority_misc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="StatusMisc1" Type="varchar" MaxLength="250" />
+          <Property Name="StatusMisc2" Type="varchar" MaxLength="250" />
+          <Property Name="StatusMisc3" Type="varchar" MaxLength="250" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileDataId" Type="int" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="AgentId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="StatusHistoryMisc1" Type="varchar" MaxLength="256" />
+          <Property Name="StatusHistoryMisc2" Type="varchar" MaxLength="256" />
+          <Property Name="StatusHistoryMisc3" Type="varchar" MaxLength="256" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__FileData__Client__2EDAF651">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FileCa__30C33EC3">
+          <End Role="FileCategory" Type="Self.FileCategory" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileCategory">
+              <PropertyRef Name="FileCategoryId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FileCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FilePr__31B762FC">
+          <End Role="FilePriority" Type="Self.FilePriority" Multiplicity="0..1" />
+          <End Role="FileData" Type="Self.FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePriority">
+              <PropertyRef Name="FilePriorityId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FilePriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_ClientCategory">
+          <End Role="ClientCategory" Type="Self.ClientCategory" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientCategory">
+              <PropertyRef Name="ClientCategoryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="ClientCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FiletrackingStoreContainer">
+          <EntitySet Name="AgentAccessLevel" EntityType="Self.AgentAccessLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientCategory" EntityType="Self.ClientCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileCategory" EntityType="Self.FileCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileData" EntityType="Self.FileData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilePriority" EntityType="Self.FilePriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusHistory" EntityType="Self.StatusHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FileData__Client__2EDAF651" Association="Self.FK__FileData__Client__2EDAF651">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FileCa__30C33EC3" Association="Self.FK__FileData__FileCa__30C33EC3">
+            <End Role="FileCategory" EntitySet="FileCategory" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FilePr__31B762FC" Association="Self.FK__FileData__FilePr__31B762FC">
+            <End Role="FilePriority" EntitySet="FilePriority" />
+            <End Role="FileData" EntitySet="FileData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_ClientCategory" Association="Self.FK_Client_ClientCategory">
+            <End Role="ClientCategory" EntitySet="ClientCategory" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Filetracking" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FiletrackingContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgentAccessLevels" EntityType="Filetracking.AgentAccessLevel" />
+          <EntitySet Name="Clients" EntityType="Filetracking.Client" />
+          <EntitySet Name="ClientCategories" EntityType="Filetracking.ClientCategory" />
+          <EntitySet Name="FileCategories" EntityType="Filetracking.FileCategory" />
+          <EntitySet Name="FileDatas" EntityType="Filetracking.FileData" />
+          <EntitySet Name="FilePriorities" EntityType="Filetracking.FilePriority" />
+          <EntitySet Name="StatusHistories" EntityType="Filetracking.StatusHistory" />
+          <AssociationSet Name="FK__FileData__Client__2EDAF651" Association="Filetracking.FK__FileData__Client__2EDAF651">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_ClientCategory" Association="Filetracking.FK_Client_ClientCategory">
+            <End Role="ClientCategory" EntitySet="ClientCategories" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FileCa__30C33EC3" Association="Filetracking.FK__FileData__FileCa__30C33EC3">
+            <End Role="FileCategory" EntitySet="FileCategories" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FileData__FilePr__31B762FC" Association="Filetracking.FK__FileData__FilePr__31B762FC">
+            <End Role="FilePriority" EntitySet="FilePriorities" />
+            <End Role="FileData" EntitySet="FileDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StatusHis__FileD__32AB8735" Association="Filetracking.FK__StatusHis__FileD__32AB8735">
+            <End Role="FileData" EntitySet="FileDatas" />
+            <End Role="StatusHistory" EntitySet="StatusHistories" />
+          </AssociationSet>
+          <EntitySet Name="Status" EntityType="Filetracking.Status" />
+        </EntityContainer>
+        <EntityType Name="AgentAccessLevel">
+          <Key>
+            <PropertyRef Name="AgentAccessLevelId" />
+          </Key>
+          <Property Name="AgentAccessLevelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessLevel" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ClientCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ClientMobile" Type="Int64" />
+          <Property Name="ClientEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ClientAddress" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="ClientDistrict" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Client_misc3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="FileDatas" Relationship="Filetracking.FK__FileData__Client__2EDAF651" FromRole="Client" ToRole="FileData" />
+          <NavigationProperty Name="ClientCategory" Relationship="Filetracking.FK_Client_ClientCategory" FromRole="Client" ToRole="ClientCategory" />
+        </EntityType>
+        <EntityType Name="ClientCategory">
+          <Key>
+            <PropertyRef Name="ClientCategoryId" />
+          </Key>
+          <Property Name="ClientCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCategoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ClientCategoryDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="dateadded" Type="DateTime" Precision="3" />
+          <Property Name="dateLastModified" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Filetracking.FK_Client_ClientCategory" FromRole="ClientCategory" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="FileCategory">
+          <Key>
+            <PropertyRef Name="FileCategoryId" />
+          </Key>
+          <Property Name="FileCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileCategoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategoryDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileCategory_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="DateLastModified" Type="DateTime" Precision="3" />
+          <Property Name="Userid" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="FileDatas" Relationship="Filetracking.FK__FileData__FileCa__30C33EC3" FromRole="FileCategory" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="FileData">
+          <Key>
+            <PropertyRef Name="FileDataId" />
+          </Key>
+          <Property Name="FileDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileNoExt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileNoInt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="FileCategoryId" Type="Int32" />
+          <Property Name="FilePriorityId" Type="Int32" />
+          <Property Name="CurrentStatus" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAgentId" Type="Int32" />
+          <Property Name="FileEntredOn" Type="DateTime" Precision="3" />
+          <Property Name="FileDeliveredOn" Type="DateTime" Precision="3" />
+          <Property Name="SubjectBrief" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SubjectDesc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CmoSection" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPersonNumber" Type="Int32" />
+          <Property Name="FundType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FundSource" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Scheme" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="AmountProposed" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountApproved" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmountMisc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="File_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="File_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="File_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client" Relationship="Filetracking.FK__FileData__Client__2EDAF651" FromRole="FileData" ToRole="Client" />
+          <NavigationProperty Name="FileCategory" Relationship="Filetracking.FK__FileData__FileCa__30C33EC3" FromRole="FileData" ToRole="FileCategory" />
+          <NavigationProperty Name="FilePriority" Relationship="Filetracking.FK__FileData__FilePr__31B762FC" FromRole="FileData" ToRole="FilePriority" />
+          <NavigationProperty Name="StatusHistories" Relationship="Filetracking.FK__StatusHis__FileD__32AB8735" FromRole="FileData" ToRole="StatusHistory" />
+        </EntityType>
+        <EntityType Name="FilePriority">
+          <Key>
+            <PropertyRef Name="FilePriorityId" />
+          </Key>
+          <Property Name="FilePriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilePriorityName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalNotif" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalAlert" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriorityIntervalCrit" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FilePriority_misc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FilePriority_misc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FilePriority_misc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="FileDatas" Relationship="Filetracking.FK__FileData__FilePr__31B762FC" FromRole="FilePriority" ToRole="FileData" />
+        </EntityType>
+        <EntityType Name="StatusHistory">
+          <Key>
+            <PropertyRef Name="StatusHistoryID" />
+          </Key>
+          <Property Name="StatusHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileDataId" Type="Int32" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="StatusHistoryMisc1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="StatusHistoryMisc2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="StatusHistoryMisc3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FileData" Relationship="Filetracking.FK__StatusHis__FileD__32AB8735" FromRole="StatusHistory" ToRole="FileData" />
+        </EntityType>
+        <Association Name="FK__FileData__Client__2EDAF651">
+          <End Type="Filetracking.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="Filetracking.FileData" Role="FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_ClientCategory">
+          <End Type="Filetracking.ClientCategory" Role="ClientCategory" Multiplicity="1" />
+          <End Type="Filetracking.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientCategory">
+              <PropertyRef Name="ClientCategoryId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="ClientCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FileCa__30C33EC3">
+          <End Type="Filetracking.FileCategory" Role="FileCategory" Multiplicity="0..1" />
+          <End Type="Filetracking.FileData" Role="FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileCategory">
+              <PropertyRef Name="FileCategoryId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FileCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FileData__FilePr__31B762FC">
+          <End Type="Filetracking.FilePriority" Role="FilePriority" Multiplicity="0..1" />
+          <End Type="Filetracking.FileData" Role="FileData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilePriority">
+              <PropertyRef Name="FilePriorityId" />
+            </Principal>
+            <Dependent Role="FileData">
+              <PropertyRef Name="FilePriorityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StatusHis__FileD__32AB8735">
+          <End Type="Filetracking.FileData" Role="FileData" Multiplicity="0..1" />
+          <End Type="Filetracking.StatusHistory" Role="StatusHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileData">
+              <PropertyRef Name="FileDataId" />
+            </Principal>
+            <Dependent Role="StatusHistory">
+              <PropertyRef Name="FileDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMisc1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMisc2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StatusMisc3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Filetracking" />
+        <Alias Key="Target" Value="Filetracking.Store" />
+        <EntityContainerMapping CdmEntityContainer="FiletrackingContainer" StorageEntityContainer="FiletrackingStoreContainer">
+          <EntitySetMapping Name="AgentAccessLevels">
+            <EntityTypeMapping TypeName="Filetracking.AgentAccessLevel">
+              <MappingFragment StoreEntitySet="AgentAccessLevel">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+                <ScalarProperty Name="AgentAccessLevelId" ColumnName="AgentAccessLevelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Filetracking.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Client_misc3" ColumnName="Client_misc3" />
+                <ScalarProperty Name="Client_misc2" ColumnName="Client_misc2" />
+                <ScalarProperty Name="Client_misc1" ColumnName="Client_misc1" />
+                <ScalarProperty Name="ClientDistrict" ColumnName="ClientDistrict" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+                <ScalarProperty Name="ClientMobile" ColumnName="ClientMobile" />
+                <ScalarProperty Name="ClientCategoryId" ColumnName="ClientCategoryId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientCategories">
+            <EntityTypeMapping TypeName="Filetracking.ClientCategory">
+              <MappingFragment StoreEntitySet="ClientCategory">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="dateLastModified" ColumnName="dateLastModified" />
+                <ScalarProperty Name="dateadded" ColumnName="dateadded" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ClientCategoryDescription" ColumnName="ClientCategoryDescription" />
+                <ScalarProperty Name="ClientCategoryName" ColumnName="ClientCategoryName" />
+                <ScalarProperty Name="ClientCategoryId" ColumnName="ClientCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileCategories">
+            <EntityTypeMapping TypeName="Filetracking.FileCategory">
+              <MappingFragment StoreEntitySet="FileCategory">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="DateLastModified" ColumnName="DateLastModified" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="FileCategory_misc3" ColumnName="FileCategory_misc3" />
+                <ScalarProperty Name="FileCategory_misc2" ColumnName="FileCategory_misc2" />
+                <ScalarProperty Name="FileCategory_misc1" ColumnName="FileCategory_misc1" />
+                <ScalarProperty Name="FileCategoryDescription" ColumnName="FileCategoryDescription" />
+                <ScalarProperty Name="FileCategoryName" ColumnName="FileCategoryName" />
+                <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileDatas">
+            <EntityTypeMapping TypeName="Filetracking.FileData">
+              <MappingFragment StoreEntitySet="FileData">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="File_misc3" ColumnName="File_misc3" />
+                <ScalarProperty Name="File_misc2" ColumnName="File_misc2" />
+                <ScalarProperty Name="File_misc1" ColumnName="File_misc1" />
+                <ScalarProperty Name="AmountMisc" ColumnName="AmountMisc" />
+                <ScalarProperty Name="AmountApproved" ColumnName="AmountApproved" />
+                <ScalarProperty Name="AmountProposed" ColumnName="AmountProposed" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="FundSource" ColumnName="FundSource" />
+                <ScalarProperty Name="FundType" ColumnName="FundType" />
+                <ScalarProperty Name="ContactPersonNumber" ColumnName="ContactPersonNumber" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="FileCode" ColumnName="FileCode" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="CmoSection" ColumnName="CmoSection" />
+                <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+                <ScalarProperty Name="SubjectBrief" ColumnName="SubjectBrief" />
+                <ScalarProperty Name="FileDeliveredOn" ColumnName="FileDeliveredOn" />
+                <ScalarProperty Name="FileEntredOn" ColumnName="FileEntredOn" />
+                <ScalarProperty Name="CurrentAgentId" ColumnName="CurrentAgentId" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+                <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FileNoInt" ColumnName="FileNoInt" />
+                <ScalarProperty Name="FileNoExt" ColumnName="FileNoExt" />
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilePriorities">
+            <EntityTypeMapping TypeName="Filetracking.FilePriority">
+              <MappingFragment StoreEntitySet="FilePriority">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FilePriority_misc3" ColumnName="FilePriority_misc3" />
+                <ScalarProperty Name="FilePriority_misc2" ColumnName="FilePriority_misc2" />
+                <ScalarProperty Name="FilePriority_misc1" ColumnName="FilePriority_misc1" />
+                <ScalarProperty Name="FilePriorityIntervalCrit" ColumnName="FilePriorityIntervalCrit" />
+                <ScalarProperty Name="FilePriorityIntervalAlert" ColumnName="FilePriorityIntervalAlert" />
+                <ScalarProperty Name="FilePriorityIntervalNotif" ColumnName="FilePriorityIntervalNotif" />
+                <ScalarProperty Name="FileWeight" ColumnName="FileWeight" />
+                <ScalarProperty Name="FilePriorityName" ColumnName="FilePriorityName" />
+                <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusHistories">
+            <EntityTypeMapping TypeName="Filetracking.StatusHistory">
+              <MappingFragment StoreEntitySet="StatusHistory">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StatusHistoryMisc3" ColumnName="StatusHistoryMisc3" />
+                <ScalarProperty Name="StatusHistoryMisc2" ColumnName="StatusHistoryMisc2" />
+                <ScalarProperty Name="StatusHistoryMisc1" ColumnName="StatusHistoryMisc1" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+                <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="Filetracking.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="StatusMisc3" ColumnName="StatusMisc3" />
+                <ScalarProperty Name="StatusMisc2" ColumnName="StatusMisc2" />
+                <ScalarProperty Name="StatusMisc1" ColumnName="StatusMisc1" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

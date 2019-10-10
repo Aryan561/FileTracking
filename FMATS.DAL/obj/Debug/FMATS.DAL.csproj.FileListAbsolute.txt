@@ -1,0 +1,12 @@
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\FMATS.DAL.dll.config
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\FMATS.DAL.dll
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\FMATS.DAL.pdb
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\EntityFramework.dll
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\EntityFramework.xml
+E:\Projects\FMATS\FMATS\FMATS.DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\FMATS\FMATS\FMATS.DAL\obj\Debug\FMATS.DAL.csproj.CoreCompileInputs.cache
+E:\Projects\FMATS\FMATS\FMATS.DAL\obj\Debug\FMATS.DAL.csproj.CopyComplete
+E:\Projects\FMATS\FMATS\FMATS.DAL\obj\Debug\FMATS.DAL.dll
+E:\Projects\FMATS\FMATS\FMATS.DAL\obj\Debug\FMATS.DAL.pdb
+E:\Projects\FMATS\FMATS\FMATS.DAL\obj\Debug\FMATS.DAL.csprojAssemblyReference.cache

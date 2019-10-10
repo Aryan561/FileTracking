@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="Filetracking" />
+  <Alias Key="Target" Value="Filetracking.Store" />
+  <EntityContainerMapping CdmEntityContainer="FiletrackingContainer" StorageEntityContainer="FiletrackingStoreContainer">
+    <EntitySetMapping Name="AgentAccessLevels">
+      <EntityTypeMapping TypeName="Filetracking.AgentAccessLevel">
+        <MappingFragment StoreEntitySet="AgentAccessLevel">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="AccessLevel" ColumnName="AccessLevel" />
+          <ScalarProperty Name="AgentAccessLevelId" ColumnName="AgentAccessLevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Filetracking.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Client_misc3" ColumnName="Client_misc3" />
+          <ScalarProperty Name="Client_misc2" ColumnName="Client_misc2" />
+          <ScalarProperty Name="Client_misc1" ColumnName="Client_misc1" />
+          <ScalarProperty Name="ClientDistrict" ColumnName="ClientDistrict" />
+          <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+          <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+          <ScalarProperty Name="ClientMobile" ColumnName="ClientMobile" />
+          <ScalarProperty Name="ClientCategoryId" ColumnName="ClientCategoryId" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientCategories">
+      <EntityTypeMapping TypeName="Filetracking.ClientCategory">
+        <MappingFragment StoreEntitySet="ClientCategory">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="dateLastModified" ColumnName="dateLastModified" />
+          <ScalarProperty Name="dateadded" ColumnName="dateadded" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ClientCategoryDescription" ColumnName="ClientCategoryDescription" />
+          <ScalarProperty Name="ClientCategoryName" ColumnName="ClientCategoryName" />
+          <ScalarProperty Name="ClientCategoryId" ColumnName="ClientCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileCategories">
+      <EntityTypeMapping TypeName="Filetracking.FileCategory">
+        <MappingFragment StoreEntitySet="FileCategory">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="DateLastModified" ColumnName="DateLastModified" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="FileCategory_misc3" ColumnName="FileCategory_misc3" />
+          <ScalarProperty Name="FileCategory_misc2" ColumnName="FileCategory_misc2" />
+          <ScalarProperty Name="FileCategory_misc1" ColumnName="FileCategory_misc1" />
+          <ScalarProperty Name="FileCategoryDescription" ColumnName="FileCategoryDescription" />
+          <ScalarProperty Name="FileCategoryName" ColumnName="FileCategoryName" />
+          <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileDatas">
+      <EntityTypeMapping TypeName="Filetracking.FileData">
+        <MappingFragment StoreEntitySet="FileData">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="File_misc3" ColumnName="File_misc3" />
+          <ScalarProperty Name="File_misc2" ColumnName="File_misc2" />
+          <ScalarProperty Name="File_misc1" ColumnName="File_misc1" />
+          <ScalarProperty Name="AmountMisc" ColumnName="AmountMisc" />
+          <ScalarProperty Name="AmountApproved" ColumnName="AmountApproved" />
+          <ScalarProperty Name="AmountProposed" ColumnName="AmountProposed" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+          <ScalarProperty Name="FundSource" ColumnName="FundSource" />
+          <ScalarProperty Name="FundType" ColumnName="FundType" />
+          <ScalarProperty Name="ContactPersonNumber" ColumnName="ContactPersonNumber" />
+          <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+          <ScalarProperty Name="FileCode" ColumnName="FileCode" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="CmoSection" ColumnName="CmoSection" />
+          <ScalarProperty Name="SubjectDesc" ColumnName="SubjectDesc" />
+          <ScalarProperty Name="SubjectBrief" ColumnName="SubjectBrief" />
+          <ScalarProperty Name="FileDeliveredOn" ColumnName="FileDeliveredOn" />
+          <ScalarProperty Name="FileEntredOn" ColumnName="FileEntredOn" />
+          <ScalarProperty Name="CurrentAgentId" ColumnName="CurrentAgentId" />
+          <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+          <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+          <ScalarProperty Name="FileCategoryId" ColumnName="FileCategoryId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="FileNoInt" ColumnName="FileNoInt" />
+          <ScalarProperty Name="FileNoExt" ColumnName="FileNoExt" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+          <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilePriorities">
+      <EntityTypeMapping TypeName="Filetracking.FilePriority">
+        <MappingFragment StoreEntitySet="FilePriority">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FilePriority_misc3" ColumnName="FilePriority_misc3" />
+          <ScalarProperty Name="FilePriority_misc2" ColumnName="FilePriority_misc2" />
+          <ScalarProperty Name="FilePriority_misc1" ColumnName="FilePriority_misc1" />
+          <ScalarProperty Name="FilePriorityIntervalCrit" ColumnName="FilePriorityIntervalCrit" />
+          <ScalarProperty Name="FilePriorityIntervalAlert" ColumnName="FilePriorityIntervalAlert" />
+          <ScalarProperty Name="FilePriorityIntervalNotif" ColumnName="FilePriorityIntervalNotif" />
+          <ScalarProperty Name="FileWeight" ColumnName="FileWeight" />
+          <ScalarProperty Name="FilePriorityName" ColumnName="FilePriorityName" />
+          <ScalarProperty Name="FilePriorityId" ColumnName="FilePriorityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusHistories">
+      <EntityTypeMapping TypeName="Filetracking.StatusHistory">
+        <MappingFragment StoreEntitySet="StatusHistory">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusHistoryMisc3" ColumnName="StatusHistoryMisc3" />
+          <ScalarProperty Name="StatusHistoryMisc2" ColumnName="StatusHistoryMisc2" />
+          <ScalarProperty Name="StatusHistoryMisc1" ColumnName="StatusHistoryMisc1" />
+          <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="FileDataId" ColumnName="FileDataId" />
+          <ScalarProperty Name="StatusHistoryID" ColumnName="StatusHistoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Filetracking.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StatusMisc3" ColumnName="StatusMisc3" />
+          <ScalarProperty Name="StatusMisc2" ColumnName="StatusMisc2" />
+          <ScalarProperty Name="StatusMisc1" ColumnName="StatusMisc1" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
