@@ -13,25 +13,72 @@ namespace FMATS.Employee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                BindData();
+            }
+        }
 
+        void BindData()
+        {
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                
+            }
         }
 
         protected void btnsubmit_ServerClick(object sender, EventArgs e)
         {
-            FileCategory fileCategory = new FileCategory
+            try
             {
-                FileCategoryName = txtCategoryName.Value,
-                FileCategoryDescription = txtCategoryNamedesc.Value
+                if (btnsubmit.InnerText == "Submit")
+                {
+                    FileCategory fileCategory = new FileCategory
+                    {
+                        FileCategoryName = txtCategoryName.Value,
+                        FileCategoryDescription = txtCategoryNamedesc.Value,
+                        CreatedDate = DateTime.Now,
+                        CreatedBy = 1
+                    };
 
+                    FileTrackingContainer entities = new FileTrackingContainer();
+                    entities.FileCategories.Add(fileCategory);
+                    entities.SaveChanges();
+                    resetcontrols();
 
-            };
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(),
+                        "toastr.success('FileCategory Added sucessfully');", true);
+                    BindData();
+                }
+                else if (btnsubmit.InnerText == "Update")
+                {
+                    using (FileTrackingContainer container = new FileTrackingContainer())
+                    {
+                        var id = int.Parse(hdnFCId.Value);
+                        var resultToUpdate =
+                            container.FileCategories.SingleOrDefault(item => item.FileCategoryId == id);
 
-            FiletrackingContainer entities = new FiletrackingContainer();
-            entities.FileCategories.Add(fileCategory);
-            entities.SaveChanges();
-            resetcontrols();
+                        if (resultToUpdate != null)
+                        {
+                            resultToUpdate.FileCategoryDescription = txtCategoryNamedesc.Value;
+                            resultToUpdate.FileCategoryName = txtCategoryName.Value;
+                            resultToUpdate.ModifiedBy = 1;
+                            resultToUpdate.ModifiedDate = DateTime.Now;
+                        }
+                        container.SaveChanges();
+                        resetcontrols();
+                        BindData();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
 
-            Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "toastr.success('FileCategory Added sucessfully');", true);
+            }
 
         }
 
@@ -40,6 +87,66 @@ namespace FMATS.Employee
             txtCategoryName.Value = "";
             txtCategoryNamedesc.Value = "";
 
+        }
+
+        protected void FCGrid_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            
+        }
+
+        protected void FCGrid_OnRowEditing(object sender, GridViewEditEventArgs e)
+        {
+            
+        }
+
+        protected void FCGrid_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "Edit")
+            {
+                hdnFCId.Value = e.CommandArgument.ToString();
+                txtCategoryName.Value = FCGrid.Rows[rowIndex - 1].Cells[1].Text;
+                txtCategoryNamedesc.Value = FCGrid.Rows[rowIndex - 1].Cells[2].Text;
+                btnsubmit.InnerText = "Update";
+            }
+            else if (e.CommandName == "Delete")
+            {
+                using (FileTrackingContainer container = new FileTrackingContainer())
+                {
+                    var agentToRemove = container.FileCategories.Find(rowIndex);
+                    container.FileCategories.Remove(agentToRemove);
+                    container.SaveChanges();
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "toastr.success('Deleted sucessfully');", true);
+                    BindData();
+                }
+            }
+        }
+
+        protected void FCGrid_OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            
+        }
+
+        protected void FCGrid_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // loop all data rows
+                foreach (DataControlFieldCell cell in e.Row.Cells)
+                {
+                    // check all cells in one row
+                    foreach (Control control in cell.Controls)
+                    {
+                        // Must use LinkButton here instead of ImageButton
+                        // if you are having Links (not images) as the command button.
+                        ImageButton button = control as ImageButton;
+                        if (button != null && button.CommandName == "Delete")
+                            // Add delete confirmation
+                            button.OnClientClick = "if (!confirm('Are you sure you want to delete Agent Id = " +
+                                                   e.Row.Cells[0].Text + "?')) return;";
+                    }
+                }
+            }
         }
     }
 }
