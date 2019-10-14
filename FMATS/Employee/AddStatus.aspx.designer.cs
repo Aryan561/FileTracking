@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FMATS.Employee {
-    
-    
-    public partial class AddStatus {
-        
+namespace FMATS.Employee
+{
+
+
+    public partial class AddStatus
+    {
+
         /// <summary>
         /// txtstatusName control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtstatusName;
-        
+
         /// <summary>
         /// btn_submit control.
         /// </summary>
@@ -29,5 +31,23 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_submit;
+
+        /// <summary>
+        /// hdnFCId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFCId;
+
+        /// <summary>
+        /// FCGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FCGrid;
     }
 }
