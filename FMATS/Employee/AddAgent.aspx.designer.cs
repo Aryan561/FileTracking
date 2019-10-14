@@ -7,11 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FMATS.Employee {
-    
-    
-    public partial class AddAgent {
-        
+namespace FMATS.Employee
+{
+
+
+    public partial class AddAgent
+    {
+
+        /// <summary>
+        /// AgentId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField AgentId;
+
         /// <summary>
         /// txtname control.
         /// </summary>
@@ -20,7 +31,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtname;
-        
+
         /// <summary>
         /// ddlagenttype control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlagenttype;
-        
+
         /// <summary>
         /// txtAgentEmployeeName control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtAgentEmployeeName;
-        
+
         /// <summary>
         /// ddlagentaccess control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlagentaccess;
-        
+
         /// <summary>
         /// txtagentmobile control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtagentmobile;
-        
+
         /// <summary>
         /// txtemail control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtemail;
-        
+
         /// <summary>
         /// txtagentscanpref control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtagentscanpref;
-        
+
         /// <summary>
         /// txtagentsec control.
         /// </summary>
@@ -83,5 +94,23 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtagentsec;
+
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSubmit;
+
+        /// <summary>
+        /// AgentGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView AgentGrid;
     }
 }

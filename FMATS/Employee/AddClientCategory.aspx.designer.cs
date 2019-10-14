@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FMATS.Employee {
-    
-    
-    public partial class AddClientCategory {
-        
+namespace FMATS.Employee
+{
+
+
+    public partial class AddClientCategory
+    {
+
         /// <summary>
         /// txtclientCategoryName control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtclientCategoryName;
-        
+
         /// <summary>
         /// txtclientCategoryNamedesc control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtclientCategoryNamedesc;
-        
+
         /// <summary>
         /// btn_submit control.
         /// </summary>
@@ -38,5 +40,23 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_submit;
+
+        /// <summary>
+        /// hdnClientId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnClientId;
+
+        /// <summary>
+        /// CCGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView CCGrid;
     }
 }

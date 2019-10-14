@@ -50,7 +50,49 @@
 
                     </div>
                 </div>
+                
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Agents</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <asp:HiddenField runat="server" id="hdnClientId" />
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: block;">
+                        <div class="row">
+                            <div class="box-body table-responsive">
+                                <asp:GridView runat="server" id="CCGrid" CssClass="table table-hover"
+                                              ShowHeaderWhenEmpty="true" 
+                                              AutoGenerateColumns="false" DataKeyNames="ClientId" OnRowEditing="CCGrid_OnRowEditing_OnRowEditing"
+                                              OnRowCommand="CCGrid_OnRowCommand_OnRowCommand"
+                                              OnRowDataBound="CCGrid_OnRowDataBound" OnRowDeleting="CCGrid_OnRowDeleting_OnRowDeleting"
+                                              OnRowCancelingEdit="CCGrid_OnRowCancelingEdit_RowCancelingEdit" Width="100%">
+                                    <EmptyDataTemplate>No Records to fetch..!</EmptyDataTemplate>
+                                    <Columns>  
+                                        <asp:BoundField DataField="ClientId" HeaderText="#" ReadOnly="True" />  
+                                        <asp:BoundField DataField="ClientCategoryName" HeaderText="Name" ReadOnly="True" />
+                                        <asp:BoundField DataField="ClientCategoryDescription" HeaderText="Description" ReadOnly="True" />  
+                                        <asp:BoundField DataField="CreatedDate" DataFormatString="{0:d}" HeaderText="Created" ReadOnly="True" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:ImageButton ImageUrl="~/img/icons8-pencil-100.png" CommandArgument='<%#Eval("ClientId") %>'
+                                                                 ID="btnEdit" CommandName="Edit" runat="server" ToolTip="Edit"
+                                                            Height="20px" Width="20px" />
+                                                <asp:ImageButton ID="btnDelete" CommandName="Delete" ImageUrl="~/img/icons8-trash-20.png" runat="server"
+                                                            ToolTip="Delete" Height="20px" Width="20px" CommandArgument='<%#Eval("ClientId") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
 
         </div>
