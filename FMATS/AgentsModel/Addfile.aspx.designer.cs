@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FMATS.AgentsModel {
-    
-    
-    public partial class Addfile {
-        
+namespace FMATS.AgentsModel
+{
+
+
+    public partial class Addfile
+    {
+
         /// <summary>
         /// ddlclientname control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlclientname;
-        
+
         /// <summary>
         /// ddlfilecategory control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlfilecategory;
-        
+
         /// <summary>
         /// ddlfilepriority control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlfilepriority;
-        
+
         /// <summary>
         /// txtsubjectbrief control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtsubjectbrief;
-        
+
         /// <summary>
         /// txtsubjectdesc control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtsubjectdesc;
-        
+
         /// <summary>
         /// txtcmosection control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtcmosection;
-        
+
         /// <summary>
         /// txtcontactpersonname control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtcontactpersonname;
-        
+
         /// <summary>
         /// txtcontactpersonnumber control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtcontactpersonnumber;
-        
+
         /// <summary>
         /// txtfundstype control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtfundstype;
-        
+
         /// <summary>
         /// txtfundssource control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtfundssource;
-        
+
         /// <summary>
         /// txtSchema control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSchema;
-        
+
         /// <summary>
         /// txtamountproposed control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtamountproposed;
-        
+
         /// <summary>
         /// txtamountApproved control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtamountApproved;
-        
+
         /// <summary>
         /// txtamountmisc control.
         /// </summary>
@@ -137,5 +139,50 @@ namespace FMATS.AgentsModel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtamountmisc;
+
+        /// <summary>
+        /// qrCodeData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder qrCodeData;
+
+        /// <summary>
+        /// GenerateQR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton GenerateQR;
+
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSubmit;
+
+        /// <summary>
+        /// hdnFileId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFileId;
+
+        /// <summary>
+        /// FGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FGrid;
     }
 }

@@ -24,54 +24,35 @@
                             <div class="row">
 
                                 <div class="col-md-6">
-
                                     <div class="form-group">
                                         <label>Client Name</label>
 
                                         <select class="form-control" id="ddlclientname" runat="server" name="ddlclientname" data-bv-field="ddlclientname">
-                                            <option value="">None</option>
-                                            <option value="1">Srikanth Konduru </option>
-                                            <option value="2">Ben Mark</option>
-
+                                            <option selected="selected" value="">None</option>
                                         </select>
                                         <small class="help-block" data-bv-validator="notEmpty" data-bv-for="ddlclientname" data-bv-result="NOT_VALIDATED" style="display: none;">Please select atleast one Type</small>
-
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
-
                                     <div class="form-group">
                                         <label>File Category</label>
 
                                         <select class="form-control" id="ddlfilecategory" runat="server" name="ddlfilecategory" data-bv-field="ddlfilecategory">
-                                            <option value="">None</option>
-                                            <option value="1">Urgent</option>
-                                            <option value="2">Medium</option>
-                                            <option value="2">Normal</option>
-
+                                            <option selected="selected" value="">None</option>
                                         </select>
                                         <small class="help-block" data-bv-validator="notEmpty" data-bv-for="ddlfilecategory" data-bv-result="NOT_VALIDATED" style="display: none;">Please select atleast one Type</small>
 
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
-
                                     <div class="form-group">
                                         <label>File Priority</label>
-
                                         <select class="form-control" id="ddlfilepriority" runat="server" name="ddlfilepriority" data-bv-field="ddlfilepriority">
-                                            <option value="">None</option>
-                                            <option value="1">Urgent</option>
-                                            <option value="2">Medium</option>
-                                            <option value="2">Normal</option>
-
+                                            <option selected="selected" value="">None</option>
                                         </select>
                                         <small class="help-block" data-bv-validator="notEmpty" data-bv-for="ddlfilepriority" data-bv-result="NOT_VALIDATED" style="display: none;">Please select atleast one Type</small>
 
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <!-- /.form-group -->
@@ -82,8 +63,6 @@
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
-
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Subject Desc</label>
@@ -92,7 +71,6 @@
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
-
                                 <div class="col-md-6">
                                     <!-- /.form-group -->
                                     <div class="form-group">
@@ -118,7 +96,6 @@
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Funds Type</label>
@@ -153,7 +130,7 @@
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Amount Approved</label>
                                         <input type="text" name="txtamountApproved" runat="server" class="form-control" id="txtamountApproved" placeholder="Schema" data-bv-field="txtamountApproved" />
@@ -162,7 +139,7 @@
                                     <!-- /.form-group -->
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Amount Misc</label>
                                         <input type="text" name="txtamountmisc" runat="server" class="form-control" id="txtamountmisc" placeholder="Schema" data-bv-field="txtamountmisc" />
@@ -171,23 +148,92 @@
                                     <!-- /.form-group -->
                                 </div>
 
-
-
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <asp:PlaceHolder runat="server" ID="qrCodeData"></asp:PlaceHolder>
+                                        <button type="button" id="GenerateQR" OnServerClick="GenerateQR_OnServerClick" runat="server" class="btn btn-primary pull-right">Gen..QR</button>
+                                    </div>
+                                    <!-- /.form-group -->
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-9"></div>
                                 <div class="col-md-3">
-                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    <button type="button" disabled="True" onserverclick="btnSubmit_OnServerClick" id="btnSubmit" runat="server" class="btn btn-primary pull-right">Submit</button>
                                 </div>
                             </div>
-
-
-
                         </form>
 
                     </div>
                 </div>
                 <!-- /.table-responsive -->
+                <asp:HiddenField ID="hdnFileId" runat="server" />
+
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">File Datas</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: block;">
+                        <div class="row">
+                            <div class="box-body table-responsive">
+                                <asp:GridView runat="server" ID="FGrid" CssClass="table table-hover"
+                                    ShowHeaderWhenEmpty="true"
+                                    AutoGenerateColumns="false" DataKeyNames="FileDataId" OnRowEditing="F_OnRowEditing"
+                                    OnPageIndexChanging="F_PageIndexChanging" OnRowCommand="F_OnRowCommand"
+                                    OnRowDataBound="F_OnRowDataBound" OnRowDeleting="F_OnRowDeleting"
+                                    Width="100%">
+                                    <EmptyDataTemplate>No Records to fetch..!</EmptyDataTemplate>
+                                    <Columns>
+                                        <asp:BoundField DataField="FileDataId" HeaderText="#" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileId" HeaderText="File#" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileNoExt" HeaderText="Ext" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileNoInt" HeaderText="Int" ReadOnly="True" />
+                                        <asp:BoundField DataField="ClientName" HeaderText="Client" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileCategoryId" HeaderText="Category" ReadOnly="True" />
+                                        <asp:BoundField DataField="FilePriorityId" HeaderText="Priority" ReadOnly="True" />
+                                        <asp:BoundField DataField="CurrentStatus" HeaderText="Status" ReadOnly="True" />
+                                        <asp:BoundField DataField="CurrentAgentId" HeaderText="Agent" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileEntredOn" HeaderText="File Entered" DataFormatString="{0:d}" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileDeliveredOn" HeaderText="Delivered On" DataFormatString="{0:d}" ReadOnly="True" />
+                                        <asp:BoundField DataField="SubjectBrief" HeaderText="Subject" ReadOnly="True" />
+                                        <asp:BoundField DataField="SubjectDesc" HeaderText="Desc" ReadOnly="True" />
+                                        <asp:BoundField DataField="CmoSection" HeaderText="Cmo" ReadOnly="True" />
+                                        <asp:TemplateField HeaderText="Code" ItemStyle-Width="100" ItemStyle-HorizontalAlign = "Center">
+                                            <ItemTemplate>
+                                                <asp:Image ImageUrl='<%# "~/img/" + Eval("FileCode") %>' runat="server" Height = "25" Width = "25" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:BoundField DataField="ContactPersonName" HeaderText="Contact Person" ReadOnly="True" />
+                                        <asp:BoundField DataField="ContactPersonNumber" HeaderText="Contact Number" ReadOnly="True" />
+                                        <asp:BoundField DataField="FundType" HeaderText="Fund Type" ReadOnly="True" />
+                                        <asp:BoundField DataField="FundSource" HeaderText="Fund Src" ReadOnly="True" />
+                                        <asp:BoundField DataField="Scheme" HeaderText="Scheme" ReadOnly="True" />
+                                        <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True" />
+                                        <asp:BoundField DataField="AmountProposed" DataFormatString="{0:c}" HtmlEncode="false" HeaderText="Proposed" ReadOnly="True" />
+                                        <asp:BoundField DataField="AmountApproved" DataFormatString="{0:c}" HtmlEncode="false" HeaderText="Approved" ReadOnly="True" />
+                                        <asp:BoundField DataField="AmountMisc" DataFormatString="{0:c}" HtmlEncode="false" HeaderText="Amt Misc" ReadOnly="True" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:ImageButton ImageUrl="~/img/icons8-pencil-100.png" CommandArgument='<%#Eval("FileDataId") %>'
+                                                    ID="btnEdit" CommandName="Edit" runat="server" ToolTip="Edit"
+                                                    Height="20px" Width="20px" />
+                                                <asp:ImageButton ID="btnDelete" CommandName="Delete" ImageUrl="~/img/icons8-trash-20.png" runat="server"
+                                                    ToolTip="Delete" Height="20px" Width="20px" CommandArgument='<%#Eval("FileDataId") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <!-- /.panel-body -->
 
