@@ -22,11 +22,11 @@ namespace FMATS.AgentsModel
         {
             if (!Page.IsPostBack)
             {
-                if (!this.Page.User.Identity.IsAuthenticated)
-                {
-                    FormsAuthentication.RedirectToLoginPage();
-                }
-                else
+                //if (!this.Page.User.Identity.IsAuthenticated)
+                //{
+                //    FormsAuthentication.RedirectToLoginPage();
+                //}
+                //else
                 {
                     FillDropdowns();
                     BuildFilesGrid();
@@ -72,7 +72,7 @@ namespace FMATS.AgentsModel
                                      query.FilePriorityName,
                                      query.FilePriorityIntervalAlert
                                  }).ToList();
-                    if (data.Count > 0)
+                    if (data1.Count > 0)
                     {
                         foreach (var t in data1)
                         {
@@ -90,7 +90,7 @@ namespace FMATS.AgentsModel
                             query.ClientId,
                             query.ClientName,
                         }).ToList();
-                    if (data.Count > 0)
+                    if (data2.Count > 0)
                     {
                         foreach (var t in data2)
                         {
@@ -118,6 +118,7 @@ namespace FMATS.AgentsModel
                     var data = (from query in container.FileDatas
                                 join c in container.Clients on query.ClientId equals c.ClientId
                                 join fc in container.FileCategories on query.FileCategoryId equals fc.FileCategoryId
+                                join fp in container.FilePriorities on query.FilePriorityId equals  fp.FilePriorityId
                                 join a in container.Agents on query.CurrentAgentId equals a.AgentId //into ag
                                 //from b in ag.DefaultIfEmpty(new DAL.Agent())
                                 select new
@@ -128,7 +129,7 @@ namespace FMATS.AgentsModel
                                     query.FileNoInt,
                                     c.ClientName,
                                     fc.FileCategoryName,
-                                    query.FilePriorityId,
+                                    fp.FilePriorityName,
                                     query.CurrentStatus,
                                     a.AgentName,
                                     query.FileEntredOn,
@@ -250,11 +251,11 @@ namespace FMATS.AgentsModel
                             FileId = fileCode,
                             FileCategoryId =
                                     Convert.ToInt32(ddlfilecategory.Items[ddlfilecategory.SelectedIndex].Value),
-                            FileCode = fileCode.Substring(0, 2),
+                            FileCode = fileCode,
                             FilePriorityId =
-                                    Convert.ToInt32(ddlfilecategory.Items[ddlfilecategory.SelectedIndex].Value),
-                            FileDeliveredOn = DateTime.Today,
-                            FileEntredOn = DateTime.Now,
+                                    Convert.ToInt32(ddlfilepriority.Items[ddlfilepriority.SelectedIndex].Value.Split('_')[0]),
+                            FileDeliveredOn = null,
+                            FileEntredOn = null,
                             FileNoExt = "2",
                             FileNoInt = "2",
                             CreatedBy = 1,
@@ -266,13 +267,14 @@ namespace FMATS.AgentsModel
                             CmoSection = txtcmosection.Value,
                             ContactPersonName = txtcontactpersonname.Value,
                             ContactPersonNumber = Convert.ToInt32(txtcontactpersonnumber.Value),
-                            CurrentAgentId = 1,
+                            CurrentAgentId = 3,
                             CurrentStatus = "Active",
                             FundSource = "By Hand",
                             FundType = "Cash"
                         }
                         );
                         container.SaveChanges();
+                        fileCode = "";
                     }
                 }
                 else if (btnSubmit.InnerText == "Update")
@@ -310,7 +312,7 @@ namespace FMATS.AgentsModel
 
             }
         }
-        string fileCode = "";
+        static string fileCode = "";
         protected void GenerateQR_OnServerClick(object sender, EventArgs e)
         {
             try

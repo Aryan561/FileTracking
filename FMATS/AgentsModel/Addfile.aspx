@@ -195,10 +195,10 @@
                                         <asp:BoundField DataField="FileNoExt" HeaderText="Ext" ReadOnly="True" />
                                         <asp:BoundField DataField="FileNoInt" HeaderText="Int" ReadOnly="True" />
                                         <asp:BoundField DataField="ClientName" HeaderText="Client" ReadOnly="True" />
-                                        <asp:BoundField DataField="FileCategoryId" HeaderText="Category" ReadOnly="True" />
-                                        <asp:BoundField DataField="FilePriorityId" HeaderText="Priority" ReadOnly="True" />
+                                        <asp:BoundField DataField="FileCategoryName" HeaderText="Category" ReadOnly="True" />
+                                        <asp:BoundField DataField="FilePriorityName" HeaderText="Priority" ReadOnly="True" />
                                         <asp:BoundField DataField="CurrentStatus" HeaderText="Status" ReadOnly="True" />
-                                        <asp:BoundField DataField="CurrentAgentId" HeaderText="Agent" ReadOnly="True" />
+                                        <asp:BoundField DataField="AgentName" HeaderText="Agent" ReadOnly="True" />
                                         <asp:BoundField DataField="FileEntredOn" HeaderText="File Entered" DataFormatString="{0:d}" ReadOnly="True" />
                                         <asp:BoundField DataField="FileDeliveredOn" HeaderText="Delivered On" DataFormatString="{0:d}" ReadOnly="True" />
                                         <asp:BoundField DataField="SubjectBrief" HeaderText="Subject" ReadOnly="True" />
@@ -206,7 +206,7 @@
                                         <asp:BoundField DataField="CmoSection" HeaderText="Cmo" ReadOnly="True" />
                                         <asp:TemplateField HeaderText="Code" ItemStyle-Width="100" ItemStyle-HorizontalAlign = "Center">
                                             <ItemTemplate>
-                                                <asp:Image ImageUrl='<%# "~/img/" + Eval("FileCode") %>' runat="server" Height = "25" Width = "25" />
+                                                <asp:Image ImageUrl='<%# Server.MapPath("~/img/" + Eval("FileCode") + ".png") %>' runat="server" Height = "60" Width = "60" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="ContactPersonName" HeaderText="Contact Person" ReadOnly="True" />
