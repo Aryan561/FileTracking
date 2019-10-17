@@ -2,14 +2,37 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-
+<script type="text/javascript">
+    function ShowPopup(title, body) {
+        $("#MyPopup .modal-title").html(title);
+        $("#MyPopup .modal-body").html(body);
+        $("#MyPopup").modal("show");
+    }
+</script>
     <section class="content">
         <ol class="breadcrumb" style="background-color: white;">
             <%--<li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>--%>
             <li class="active">Add File </li>
         </ol>
 
-
+        <div id="MyPopup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-primary">
@@ -151,7 +174,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <asp:PlaceHolder runat="server" ID="qrCodeData"></asp:PlaceHolder>
-                                        <button type="button" id="GenerateQR" OnServerClick="GenerateQR_OnServerClick" runat="server" class="btn btn-primary pull-right">Gen..QR</button>
+                                        <button type="button" id="GenerateQR"  onserverclick="GenerateQR_OnServerClick" runat="server" class="btn btn-primary pull-right">Gen..QR</button>
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -204,9 +227,9 @@
                                         <asp:BoundField DataField="SubjectBrief" HeaderText="Subject" ReadOnly="True" />
                                         <asp:BoundField DataField="SubjectDesc" HeaderText="Desc" ReadOnly="True" />
                                         <asp:BoundField DataField="CmoSection" HeaderText="Cmo" ReadOnly="True" />
-                                        <asp:TemplateField HeaderText="Code" ItemStyle-Width="100" ItemStyle-HorizontalAlign = "Center">
+                                        <asp:TemplateField HeaderText="Code" ItemStyle-Width="100" ItemStyle-HorizontalAlign="Center">
                                             <ItemTemplate>
-                                                <asp:Image ImageUrl='<%# Server.MapPath("~/img/" + Eval("FileCode") + ".png") %>' runat="server" Height = "60" Width = "60" />
+                                                <asp:Image ImageUrl='<%# Server.MapPath("~/img/" + Eval("FileCode") + ".png") %>' runat="server" Height="60" Width="60" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="ContactPersonName" HeaderText="Contact Person" ReadOnly="True" />

@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using FMATS.DAL;
+using FMATS.Employee;
 using QRCoder;
 using Image = System.Web.UI.WebControls.Image;
 
@@ -32,6 +33,12 @@ namespace FMATS.AgentsModel
                     BuildFilesGrid();
                 }
             }
+        }
+        protected void ShowPopup()
+        {
+            string title = "Greetings";
+            string body = "Welcome to ASPSnippets.com";
+            ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
         }
         protected override void InitializeCulture()
         {
@@ -275,6 +282,8 @@ namespace FMATS.AgentsModel
                         );
                         container.SaveChanges();
                         fileCode = "";
+
+                        MailClass.SendMail("","");
                     }
                 }
                 else if (btnSubmit.InnerText == "Update")
