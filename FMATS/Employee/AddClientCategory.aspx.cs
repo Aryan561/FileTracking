@@ -15,11 +15,11 @@ namespace FMATS.Employee
         {
             if (!Page.IsPostBack)
             {
-                //if (!this.Page.User.Identity.IsAuthenticated)
-                //{
-                //    FormsAuthentication.RedirectToLoginPage();
-                //}
-                //else
+                if (!this.Page.User.Identity.IsAuthenticated)
+                {
+                    FormsAuthentication.RedirectToLoginPage();
+                }
+                else
                     BindData();
             }
         }
@@ -61,6 +61,7 @@ namespace FMATS.Employee
                             resultToUpdate.dateLastModified = DateTime.Now;
                         }
                         container.SaveChanges();
+                        ResetCotrols();
                         BindData();
                     }
                 }
@@ -110,7 +111,24 @@ namespace FMATS.Employee
 
         protected void CCGrid_OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // loop all data rows
+                foreach (DataControlFieldCell cell in e.Row.Cells)
+                {
+                    // check all cells in one row
+                    foreach (Control control in cell.Controls)
+                    {
+                        // Must use LinkButton here instead of ImageButton
+                        // if you are having Links (not images) as the command button.
+                        ImageButton button = control as ImageButton;
+                        if (button != null && button.CommandName == "Delete")
+                            // Add delete confirmation
+                            button.OnClientClick = "if (!confirm('Are you sure you want to delete CC Id = " +
+                                                   e.Row.Cells[0].Text + "?')) return;";
+                    }
+                }
+            }
         }
 
         protected void CCGrid_OnRowEditing_OnRowEditing(object sender, GridViewEditEventArgs e)
