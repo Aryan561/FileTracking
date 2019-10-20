@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using FMATS.DAL;
@@ -12,7 +13,15 @@ namespace FMATS.Employee
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                //if (!this.Page.User.Identity.IsAuthenticated)
+                //{
+                //    FormsAuthentication.RedirectToLoginPage();
+                //}
+                //else
+                    BindData();
+            }
         }
 
         protected void btn_submit_ServerClick(object sender, EventArgs e)

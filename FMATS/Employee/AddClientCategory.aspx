@@ -53,7 +53,7 @@
                 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Agents</h3>
+                        <h3 class="box-title">Client Categories</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -76,7 +76,7 @@
                                         <asp:BoundField DataField="ClientId" HeaderText="#" ReadOnly="True" />  
                                         <asp:BoundField DataField="ClientCategoryName" HeaderText="Name" ReadOnly="True" />
                                         <asp:BoundField DataField="ClientCategoryDescription" HeaderText="Description" ReadOnly="True" />  
-                                        <asp:BoundField DataField="CreatedDate" DataFormatString="{0:d}" HeaderText="Created" ReadOnly="True" />
+                                        <asp:BoundField DataField="dateadded" DataFormatString="{0:d}" HeaderText="Created" ReadOnly="True" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <asp:ImageButton ImageUrl="~/img/icons8-pencil-100.png" CommandArgument='<%#Eval("ClientId") %>'

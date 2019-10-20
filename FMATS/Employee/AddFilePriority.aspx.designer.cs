@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FMATS.Employee {
-    
-    
-    public partial class AddFilePriority {
-        
+namespace FMATS.Employee
+{
+
+
+    public partial class AddFilePriority
+    {
+
         /// <summary>
         /// txtpriorityname control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtpriorityname;
-        
+
         /// <summary>
         /// txtfileweight control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtfileweight;
-        
+
         /// <summary>
         /// txtintervalNotif control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtintervalNotif;
-        
+
         /// <summary>
         /// txtintervalAlert control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtintervalAlert;
-        
+
         /// <summary>
         /// txtPriorityIntervalCrit control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtPriorityIntervalCrit;
-        
+
         /// <summary>
         /// btnsubmit control.
         /// </summary>
@@ -65,5 +67,23 @@ namespace FMATS.Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnsubmit;
+
+        /// <summary>
+        /// hdnFPId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFPId;
+
+        /// <summary>
+        /// FPGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FPGrid;
     }
 }

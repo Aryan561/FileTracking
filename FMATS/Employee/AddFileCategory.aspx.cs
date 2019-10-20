@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using FMATS.DAL;
@@ -15,7 +16,12 @@ namespace FMATS.Employee
         {
             if (!Page.IsPostBack)
             {
-                BindData();
+                if (!this.Page.User.Identity.IsAuthenticated)
+                {
+                    FormsAuthentication.RedirectToLoginPage();
+                }
+                else
+                    BindData();
             }
         }
 
@@ -23,7 +29,34 @@ namespace FMATS.Employee
         {
             try
             {
+                try
+                {
+                    using (FileTrackingContainer container = new FileTrackingContainer())
+                    {
+                        var data = (from query in container.FileCategories
+                            select new
+                            {
+                                query.FileCategoryId,
+                                query.CreatedDate,
+                                query.FileCategoryDescription,
+                                query.FileCategoryName
+                            }).ToList();
+                        if (data.Count > 0)
+                        {
+                            FCGrid.DataSource = data;
+                            FCGrid.DataBind();
+                        }
+                        else
+                        {
+                            FCGrid.DataSource = new List<DAL.FileCategory>();
+                            FCGrid.DataBind();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
 
+                }
             }
             catch (Exception e)
             {
@@ -101,24 +134,31 @@ namespace FMATS.Employee
 
         protected void FCGrid_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "Edit")
+            try
             {
-                hdnFCId.Value = e.CommandArgument.ToString();
-                txtCategoryName.Value = FCGrid.Rows[rowIndex - 1].Cells[1].Text;
-                txtCategoryNamedesc.Value = FCGrid.Rows[rowIndex - 1].Cells[2].Text;
-                btnsubmit.InnerText = "Update";
-            }
-            else if (e.CommandName == "Delete")
-            {
-                using (FileTrackingContainer container = new FileTrackingContainer())
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                if (e.CommandName == "Edit")
                 {
-                    var agentToRemove = container.FileCategories.Find(rowIndex);
-                    container.FileCategories.Remove(agentToRemove);
-                    container.SaveChanges();
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "toastr.success('Deleted sucessfully');", true);
-                    BindData();
+                    hdnFCId.Value = e.CommandArgument.ToString();
+                    txtCategoryName.Value = FCGrid.Rows[rowIndex - 1].Cells[1].Text;
+                    txtCategoryNamedesc.Value = FCGrid.Rows[rowIndex - 1].Cells[2].Text;
+                    btnsubmit.InnerText = "Update";
                 }
+                else if (e.CommandName == "Delete")
+                {
+                    using (FileTrackingContainer container = new FileTrackingContainer())
+                    {
+                        var agentToRemove = container.FileCategories.Find(rowIndex);
+                        container.FileCategories.Remove(agentToRemove);
+                        container.SaveChanges();
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "toastr.success('Deleted sucessfully');", true);
+                        BindData();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                
             }
         }
 

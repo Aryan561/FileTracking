@@ -54,7 +54,7 @@
                 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Agents</h3>
+                        <h3 class="box-title">File Category</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -67,7 +67,7 @@
                             <div class="box-body table-responsive">
                                 <asp:GridView runat="server" id="FCGrid" CssClass="table table-hover"
                                               ShowHeaderWhenEmpty="true" 
-                                              AutoGenerateColumns="false" DataKeyNames="AgentId" OnRowEditing="FCGrid_OnRowEditing"
+                                              AutoGenerateColumns="false" DataKeyNames="FileCategoryId" OnRowEditing="FCGrid_OnRowEditing"
                                               OnPageIndexChanging="FCGrid_OnPageIndexChanging" OnRowCommand="FCGrid_OnRowCommand"
                                               OnRowDataBound="FCGrid_OnRowDataBound" OnRowDeleting="FCGrid_OnRowDeleting" Width="100%">
                                     <EmptyDataTemplate>No Records to fetch..!</EmptyDataTemplate>

@@ -89,6 +89,51 @@
                     </div>
                 </div>
                 <!-- /.table-responsive -->
+                
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Agents</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <asp:HiddenField ID="hdnFPId" runat="server" />
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: block;">
+                        <div class="row">
+                            <div class="box-body table-responsive">
+                                <asp:GridView runat="server" id="FPGrid" CssClass="table table-hover"
+                                              ShowHeaderWhenEmpty="true" 
+                                              AutoGenerateColumns="false" DataKeyNames="FilePriorityId" OnRowEditing="AgentGrid_OnRowEditing"
+                                              OnPageIndexChanging="AgentGrid_PageIndexChanging" OnRowCommand="AgentGrid_OnRowCommand"
+                                              OnRowDataBound="AgentGrid_OnRowDataBound" OnRowDeleting="AgentGrid_OnRowDeleting"
+                                              OnRowCancelingEdit="AgentGrid_RowCancelingEdit" Width="100%">
+                                    <EmptyDataTemplate>No Records to fetch..!</EmptyDataTemplate>
+                                    <Columns>  
+                                        <asp:BoundField DataField="FilePriorityId" HeaderText="#" ReadOnly="True" />  
+                                        <asp:BoundField DataField="FilePriorityName" HeaderText="Name" ReadOnly="True" />
+                                        <asp:BoundField DataField="FilePriorityIntervalAlert" HeaderText="Interval" ReadOnly="True" />  
+                                        <asp:BoundField DataField="FilePriorityIntervalCrit" HeaderText="Critical" ReadOnly="True" />
+                                        <asp:BoundField DataField="FilePriorityIntervalNotif" HeaderText="Notification" ReadOnly="True" />  
+                                        <asp:BoundField DataField="CreatedDate" DataFormatString="{0:d}" HeaderText="Created" ReadOnly="True" />
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:ImageButton ImageUrl="~/img/icons8-pencil-100.png" CommandArgument='<%#Eval("FilePriorityId") %>'
+                                                                 ID="btnEdit" CommandName="Edit" runat="server" ToolTip="Edit"
+                                                            Height="20px" Width="20px" />
+                                                <asp:ImageButton ID="btnDelete" CommandName="Delete" ImageUrl="~/img/icons8-trash-20.png" runat="server"
+                                                            ToolTip="Delete" Height="20px" Width="20px" CommandArgument='<%#Eval("FilePriorityId") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <!-- /.panel-body -->
 
