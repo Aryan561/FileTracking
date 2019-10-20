@@ -12,7 +12,7 @@
                           <span class="info-box-icon bg-aqua"><i class="fa fa-plane"></i></span>
                           <div class="info-box-content">
                               <span class="info-box-text">Files Submitted</span>
-                              <span class="info-box-number">100<small></small></span>
+                              <span class="info-box-number"><label runat="server" readonly="readonly" ID="FilesSubmitted" value="100"></label><small></small></span>
                           </div>
                           <!-- /.info-box-content -->
                       </div>
@@ -24,7 +24,7 @@
                           <span class="info-box-icon bg-red"><i class="fa fa-calendar-o"></i></span>
                           <div class="info-box-content">
                               <span class="info-box-text">File Processing</span>
-                              <span class="info-box-number">20</span>
+                              <span class="info-box-number"><label runat="server" ID="FilesInProcess" readonly="readonly"></label></span>
                           </div>
                           <!-- /.info-box-content -->
                       </div>
@@ -37,8 +37,8 @@
                       <div class="info-box">
                           <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                           <div class="info-box-content">
-                              <span class="info-box-text">Files Complted</span>
-                              <span class="info-box-number">80</span>
+                              <span class="info-box-text">Files Completed</span>
+                              <span class="info-box-number"><label runat="server" ID="FilesCompleted" readonly="readonly" value="20"></label></span>
                           </div>
                           <!-- /.info-box-content -->
                       </div>
@@ -50,14 +50,14 @@
                           <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                           <div class="info-box-content">
                               <span class="info-box-text">Total Clients</span>
-                              <span class="info-box-number">2,000</span>
+                              <span class="info-box-number"><label runat="server" ID="TotalClients" value="1200" readonly="readonly"></label></span>
                           </div>
                           <!-- /.info-box-content -->
                       </div>
                       <!-- /.info-box -->
                   </div>
                   <!-- /.col -->
-              </div>
+              </div> v
               <!-- /.row -->
               <div class="row">
                   <div class="col-md-12">
