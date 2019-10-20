@@ -15,11 +15,11 @@ namespace FMATS.Employee
         {
             if (!Page.IsPostBack)
             {
-                //if (!this.Page.User.Identity.IsAuthenticated)
-                //{
-                //    FormsAuthentication.RedirectToLoginPage();
-                //}
-                //else
+                if (!this.Page.User.Identity.IsAuthenticated)
+                {
+                    FormsAuthentication.RedirectToLoginPage();
+                }
+                else
                 {
                     BindAgentsData();
                 }
