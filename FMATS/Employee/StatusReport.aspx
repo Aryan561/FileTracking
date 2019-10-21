@@ -19,10 +19,11 @@
                                 <div class="col-md-12">
                                     <div class="row">
 
-                                        <div class="col-md-3">
-
-
+                                        <div class="col-md-9">
                                             <div class="form-group">
+                                                <input type="text" name="txtSearch" runat="server" class="form-control" id="txtSearch" placeholder="Search Agent or Status names with coma separator" data-bv-field="txtclientCategoryName" />
+                                            </div>
+                                            <%--<div class="form-group">
 
                                                 <label for="ddlMonth" class="col-sm-3 control-label">
                                                     Month
@@ -43,14 +44,9 @@
                                                         <option value="12">December</option>
                                                     </select>
                                                 </div>
-                                            </div>
-
-
-
-
-
+                                            </div>--%>
                                         </div>
-                                        <div class="col-md-3">
+                                        <%--<div class="col-md-3">
 
                                             <div class="form-group">
 
@@ -70,9 +66,9 @@
 
 
 
-                                        </div>
+                                        </div>--%>
 
-                                        <div class="col-md-3">
+                                        <%--<div class="col-md-3">
 
                                             <div>
                                                 <label class="radio-inline">
@@ -83,32 +79,63 @@
                                                 </label>
                                             </div>
 
-                                        </div>
+                                        </div>--%>
 
                                         <div class="col-md-3">
-
-                                            <input type="button" id="btnSubmit" value="Submit" class="btn btn-primary">
-                                            <input type="button" class="btn btn-danger cancelbutton" value="Cancel">
-
-
-                                            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                            <!-- <button type="submit" class="btn btn-danger">Cancel</button> -->
-
+                                            <div class="form-group">
+                                                <input type="button" id="btnSubmit" runat="server" value="Search" class="btn btn-primary" />
+                                                <input type="button" ID="btnCancel" runat="server" class="btn btn-danger cancelbutton" value="Cancel" />
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                         </form>
+                    </div>
+                </div>
+                
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Client Categories</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <asp:HiddenField runat="server" id="hdnSRId" />
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: block;">
+                        <div class="row">
+                            <div class="box-body table-responsive">
+                                <asp:GridView runat="server" id="SRGrid" CssClass="table table-hover"
+                                              ShowHeaderWhenEmpty="true" 
+                                              AutoGenerateColumns="false" DataKeyNames="FileId" OnRowEditing="CCGrid_OnRowEditing"
+                                              OnRowCommand="CCGrid_OnRowCommand"
+                                              OnRowDataBound="CCGrid_OnRowDataBound" OnRowDeleting="CCGrid_OnRowDeleting"
+                                              Width="100%">
+                                    <EmptyDataTemplate>No Records to fetch..!</EmptyDataTemplate>
+                                    <Columns>  
+                                        <asp:BoundField DataField="FileId" HeaderText="#" ReadOnly="True" />  
+                                        <asp:TemplateField>
+                                            <ItemTemplate>
+                                                <asp:ImageButton ImageUrl="~/img/icons8-pencil-100.png" CommandArgument='<%#Eval("FileId") %>'
+                                                                 ID="btnEdit" CommandName="Edit" runat="server" ToolTip="Edit"
+                                                            Height="20px" Width="20px" />
+                                                <asp:ImageButton ID="btnDelete" CommandName="Delete" ImageUrl="~/img/icons8-trash-20.png" runat="server"
+                                                            ToolTip="Delete" Height="20px" Width="20px" CommandArgument='<%#Eval("FileId") %>' />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
 
                     </div>
-
                 </div>
                 <!-- /.table-responsive -->
             </div>
             <!-- /.panel-body -->
-
         </div>
         <!-- /.panel panel-default -->
 
@@ -124,7 +151,7 @@
                         <!-- <input type="text" name="table_search" class="form-control pull-right" placeholder="Search"> -->
 
                         <!-- <div class="input-group-btn"> -->
-                        <!-- <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button> -->
+                        <!-- <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button> -->
                         <!-- </div> -->
                         <!-- </div> -->
                         <!-- </div> -->
@@ -156,10 +183,10 @@
                             <p></p>
 
                             <div class="col-md-offset-8 col-md-12 col-sm-offset-8 col-sm-12">
-                                <button type="submit" class="btn btn-primary">Save & Close</button>
-                                <button type="submit" class="btn btn-primary">Save & Send Time Sheet</button>
+                                <button type="button" class="btn btn-primary">Save & Close</button>
+                                <button type="button" class="btn btn-primary">Save & Send Time Sheet</button>
                                 <input type="button" class="btn btn-danger cancelbutton" value="Cancel">
-                                <!-- <button type="submit" class="btn btn-danger">Cancel</button> -->
+                                <!-- <button type="button" class="btn btn-danger">Cancel</button> -->
                             </div>
                     </div>
                 </div>
